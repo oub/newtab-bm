@@ -1,0 +1,14 @@
+html,
+body {
+  background-color: transparent;
+  font: caption;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+div#app {
+  height: 100%;
+  overflow: auto;
+}
