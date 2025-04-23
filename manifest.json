@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "NewTab page with bookmarks",
+  "short_name": "newtab-bm",
+  "version": "1.0",
+  "description": "A NewTab page that displays bookmarks.",
+  "author": "oub",
+  "homepage_url": "https://github.com/oub/newtab-bm",
+  "minimum_chrome_version": "100",
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "128": "icons/icon-128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "dist/index.html"
+  },
+  "chrome_settings_overrides": {
+    "homepage": "dist/index.html"
+  },
+  "permissions": ["bookmarks", "topSites"],
+  "optional_permissions": [],
+  "optional_host_permissions": []
+}
