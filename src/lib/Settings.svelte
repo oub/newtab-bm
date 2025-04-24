@@ -1,7 +1,7 @@
 <script module>
   import { onMount } from "svelte";
-  import closeIcon from "../assets/cross_20.svg";
-  import settingsIcon from "../assets/settings_24.svg";
+  import closeIcon from "../assets/cross-20.svg";
+  import settingsIcon from "../assets/settings-24.svg";
   import { colorScheme } from "./colors";
   import { settings, type GroupAppearance, type LabelMode } from "./settings";
 </script>

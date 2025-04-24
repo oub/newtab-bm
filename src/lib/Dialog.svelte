@@ -1,6 +1,6 @@
 <script module>
   import type { Snippet } from "svelte";
-  import closeIcon from "../assets/cross_20.svg";
+  import closeIcon from "../assets/cross-20.svg";
   import { colorScheme } from "./colors";
 
   interface Props {
