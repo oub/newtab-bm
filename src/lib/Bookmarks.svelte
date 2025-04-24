@@ -1,7 +1,11 @@
 <script module>
   import { browser } from "webextension-polyfill-ts";
+  import {
+    areBookmarksLoaded,
+    loadToolbarBookmarks,
+    type FaviconedBookmarks,
+  } from "./bookmarks";
   import Group from "./Group.svelte";
-  import { loadToolbarBookmarks, type FaviconedBookmarks } from "./bookmarks";
   import { settings } from "./settings";
 
   interface Props {}
@@ -9,28 +13,31 @@
 
 <script lang="ts">
   let {}: Props = $props();
-  let toolbarBookmarks: FaviconedBookmarks[] = $state([]);
+
+  let bookmarks: FaviconedBookmarks[] = $state([]);
+
   const { groupAppearance } = $derived($settings);
 
+  const load = () =>
+    loadToolbarBookmarks().then((bm) => {
+      bookmarks = bm;
+      $areBookmarksLoaded = true;
+    });
+
+  load();
+
   const topBookmarks = $derived(
-    toolbarBookmarks.filter(
+    bookmarks.filter(
       (bookmark) =>
         bookmark.type === "bookmark" || bookmark.type === "separator"
     )
   );
   const bookmarkGroups = $derived(
-    toolbarBookmarks.filter(
+    bookmarks.filter(
       (bookmark) =>
         bookmark.type === "folder" && (bookmark.children?.length ?? 0) > 0
     )
   );
-
-  const load = () =>
-    loadToolbarBookmarks().then((bookmarks) => {
-      toolbarBookmarks = bookmarks;
-    });
-
-  load();
 
   browser.bookmarks.onChanged.addListener(load);
   browser.bookmarks.onCreated.addListener(load);
