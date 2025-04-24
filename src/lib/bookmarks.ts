@@ -1,3 +1,4 @@
+import { writable } from "svelte/store";
 import {
   browser,
   type Bookmarks,
@@ -7,6 +8,8 @@ import {
 export type FaviconedBookmarks = Bookmarks.BookmarkTreeNode & {
   favicon?: string;
 };
+
+export let areBookmarksLoaded = writable(false);
 
 const getBookmarks = async (): Promise<Bookmarks.BookmarkTreeNode[]> => {
   if (typeof browser.bookmarks !== "undefined") {
@@ -21,21 +24,29 @@ const getBookmarks = async (): Promise<Bookmarks.BookmarkTreeNode[]> => {
   return Promise.resolve([]);
 };
 
-const processBookmarks = (
-  bs: FaviconedBookmarks[],
+const assignFaviconsToBookmarks = (
+  bookmarks: FaviconedBookmarks[],
   topSitesMap: Map<string, string>
 ): void =>
-  bs.forEach((b) => {
-    if (b.children) {
-      processBookmarks(b.children, topSitesMap);
-    } else if (b.type === "bookmark") {
-      const bookmarkUrl = b.url || "";
+  bookmarks.forEach((bookmark) => {
+    if (bookmark.children) {
+      assignFaviconsToBookmarks(bookmark.children, topSitesMap);
+    } else if (bookmark.type === "bookmark") {
+      const bookmarkUrl = bookmark.url || "";
+      const isGoogMaps = !!bookmark.url?.match(
+        /^https\:\/\/www.google.[a-z]*\/maps/
+      );
       const url = new URL(bookmarkUrl);
-      if (topSitesMap.has(url.host)) {
-        b.favicon = topSitesMap.get(url.host);
+      if (isGoogMaps) {
+        // If the URL is a Google Maps link, use a specific favicon
+        bookmark.favicon =
+          "https://www.google.com/s2/favicons?domain_url=maps.google.com&sz=32";
+      } else if (topSitesMap.has(url.host)) {
+        bookmark.favicon = topSitesMap.get(url.host);
       } else {
-        b.favicon = "chrome://branding/content/about-logo.png";
-        b.favicon = url.protocol + "//" + url.host + "/favicon.ico";
+        // Try to get the favicon from the URL directly
+        // This is a fallback if the favicon is not found in topSitesMap
+        bookmark.favicon = url.protocol + "//" + url.host + "/favicon.ico";
       }
     }
   });
@@ -47,21 +58,17 @@ const getTopSites = (): Promise<TopSites.MostVisitedURL[]> => {
   return browser.topSites.get({
     limit: 100,
     includeFavicon: true,
-    onePerDomain: true,
   });
 };
 
 const convertToHostFaviconMap = (
   topSites: TopSites.MostVisitedURL[]
 ): Map<string, string> => {
-  const topSitesMap = new Map<string, string>();
+  const hostFaviconMap = new Map<string, string>();
   topSites.forEach((site) => {
-    const faviconUrl = site.favicon || "";
-    const siteUrl = site.url || "";
-    const url = new URL(siteUrl);
-    topSitesMap.set(url.host, faviconUrl);
+    hostFaviconMap.set(new URL(site.url || "").host, site.favicon || "");
   });
-  return topSitesMap;
+  return hostFaviconMap;
 };
 
 const retrieveFavicons: (
@@ -69,7 +76,9 @@ const retrieveFavicons: (
 ) => Promise<FaviconedBookmarks[]> = (bookmarks: FaviconedBookmarks[]) =>
   getTopSites()
     .then(convertToHostFaviconMap)
-    .then(async (topSitesMap) => processBookmarks(bookmarks, topSitesMap))
+    .then(async (hostFaviconMap) =>
+      assignFaviconsToBookmarks(bookmarks, hostFaviconMap)
+    )
     .catch((error) => console.error("Error fetching top sites:", error))
     .then(() => bookmarks);
 
