@@ -1,12 +1,13 @@
 <script module>
+  import { areBookmarksLoaded } from "./bookmarks";
   import { colorScheme } from "./colors";
 </script>
 
 <script lang="ts">
-  console.log("$colorScheme", $colorScheme);
+  let bookmarksLoaded = $derived($areBookmarksLoaded);
 </script>
 
-<div class="logo-and-wordmark">
+<div class={["logo-and-wordmark", { show: bookmarksLoaded }]}>
   <div class="logo"></div>
   <div class="wordmark">
     <img
@@ -24,6 +25,11 @@
     justify-content: center;
     margin-block-end: 48px;
     margin-block-start: 30px;
+    opacity: 0;
+
+    &.show {
+      opacity: 1;
+    }
 
     .logo {
       display: inline-block;
