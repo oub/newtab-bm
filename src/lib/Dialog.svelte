@@ -56,15 +56,6 @@
   </div>
 </dialog>
 
-<!-- <svelte:body
-  onclick={(event) => {
-    if (isOpened) {
-      dialog?.close();
-      event.stopPropagation();
-    }
-  }}
-/> -->
-
 <style>
   dialog {
     background-color: var(--oub--background-color);

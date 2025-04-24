@@ -42,13 +42,6 @@
 </Hoverable>
 
 <Dialog bind:this={dialog}>
-  <!-- <GroupTitle title={bookmark.title} showBorder={false} />
-  <div class="bookmarks">
-    {#each bookmark?.children ?? [] as childrenBookmark}
-      <Bookmark bookmark={childrenBookmark} />
-    {/each}
-  </div> -->
-
   <Group
     bookmarks={bookmark?.children ?? []}
     title={bookmark.title}
@@ -76,32 +69,5 @@
     right: 0;
     top: 0;
     z-index: 1;
-  }
-
-  /* .badge1 {
-    --relative-position: -8px;
-    align-items: center;
-    background-color: var(--oub--background-color);
-    border: solid 1.4px var(--oub--foreground-color);
-    border-radius: 50%;
-    bottom: var(--relative-position);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--oub--foreground-color);
-    display: flex;
-    height: 20px;
-    justify-content: center;
-    position: absolute;
-    right: var(--relative-position);
-    width: 20px;
-    z-index: 1;
-  } */
-
-  .bookmarks {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 </style>
