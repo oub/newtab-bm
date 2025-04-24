@@ -3,80 +3,26 @@
   import Bookmarks from "./lib/Bookmarks.svelte";
   import LogoAndWordmark from "./lib/LogoAndWordmark.svelte";
   import Settings from "./lib/Settings.svelte";
-  import {
-    colorScheme,
-    convertToComputedColor,
-    getDarkestColor,
-  } from "./lib/colors";
+  import { retrieveColors } from "./lib/colors";
 </script>
 
 <script lang="ts">
-  let mainElement: HTMLElement | null = $state(null);
+  let colors = $state({
+    backgroundColor: "unset",
+    borderColor: "unset",
+    foregroundColor: "unset",
+  });
 
-  let scheme = $state("unset");
-  let backgroundColor = $state("unset");
-  let borderColor = $state("unset");
-  let foregroundColor = $state("unset");
-
-  const defaultBackgroundColor = "#fff";
-  const defaultForegroundColor = "#000";
-
-  const retrieveColors = (updateInfo?: Theme.ThemeUpdateInfo) => {
-    browser.theme.getCurrent().then((theme) => {
-      console.log("theme.getCurrent()", theme);
-      console.log("updateInfo?.theme", updateInfo?.theme);
-      scheme = theme.properties?.color_scheme;
-      console.log(scheme);
-
-      backgroundColor = theme.colors?.popup ?? defaultBackgroundColor;
-
-      foregroundColor = theme.colors?.popup_text ?? defaultForegroundColor;
-
-      // Convert colors to computed values
-      foregroundColor = convertToComputedColor(foregroundColor);
-      backgroundColor = convertToComputedColor(backgroundColor);
-
-      borderColor = convertToComputedColor(
-        // theme.colors?.toolbar_bottom_separator
-        //   ? `${theme.colors?.toolbar_bottom_separator}`
-        //   :
-        `color-mix(in srgb, ${foregroundColor} 30%, ${backgroundColor})`
-      );
-
-      // if (borderColor === backgroundColor) {
-      //   borderColor = convertToComputedColor(
-      //     `color-mix(in srgb, ${foregroundColor} 20%, transparent)`
-      //   );
-      // }
-
-      console.log("backgroundColor", backgroundColor);
-      console.log("foregroundColor", foregroundColor);
-      console.log("borderColor", borderColor);
-
-      // Sometimes, theme.getCurrent() returns null, so we need to estimate the color scheme
-      $colorScheme =
-        getDarkestColor(backgroundColor, foregroundColor) === backgroundColor
-          ? "dark"
-          : "light";
-      console.log("Updated scheme:", $colorScheme);
-
-      if ($colorScheme === "light") {
-        backgroundColor = getDarkestColor(backgroundColor, "#f9f9f9");
-      }
-    });
-  };
-
-  retrieveColors();
+  retrieveColors().then((c) => (colors = c));
   browser.theme.onUpdated.addListener((updateInfo: Theme.ThemeUpdateInfo) => {
-    retrieveColors(updateInfo);
+    retrieveColors(updateInfo).then((c) => (colors = c));
   });
 </script>
 
 <main
-  bind:this={mainElement}
-  style:--oub--background-color={backgroundColor}
-  style:--oub--foreground-color={foregroundColor}
-  style:--oub--border-color={borderColor}
+  style:--oub--background-color={colors.backgroundColor}
+  style:--oub--foreground-color={colors.foregroundColor}
+  style:--oub--border-color={colors.borderColor}
 >
   <LogoAndWordmark />
   <Bookmarks />
@@ -84,14 +30,6 @@
 </main>
 
 <style>
-  :global {
-    html,
-    body {
-      background-color: var(--oub--background-color);
-      color: var(--oub--foreground-color);
-    }
-  }
-
   main {
     align-items: center;
     background-color: var(--oub--background-color);
