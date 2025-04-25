@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "NewTab page with bookmarks",
+  "name": "NewTab Bookmarks",
   "short_name": "newtab-bm",
   "version": "1.0",
-  "description": "A NewTab page that displays bookmarks from toolbar.",
+  "description": "A NewTab page that displays toolbar bookmarks.",
   "author": "Olivier Cuenot",
   "homepage_url": "https://github.com/oub/newtab-bm",
   "minimum_chrome_version": "100",
