@@ -1,4 +1,4 @@
-# NewTab page with Bookmarks
+# NewTab Bookmarks
 
 This Firefox extension is a replacement for the native newtab page.
 
