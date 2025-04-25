@@ -14,17 +14,19 @@ To build the Svelte webapp, run:
 pnpm build --watch
 ```
 
+It generates webapp code in `./dist` directory.
+
 To see it in action, go to `about:debugging#/runtime/this-firefox`, click "Load temporary Add-on..." and select `./manifest.json`.
 
 ## Package
 
-To build the webapp and package the extension using web-ext, run:
+To package the extension using web-ext, run:
 
 ```
 pnpm package
 ```
 
-It generates a zip file in the releases directory.
+It generates a zip file in `./releases` directory containing the webapp copied from `./dist`, the `./manifest.json` file and some additional files, mostly icons.
 
 # About
 
