@@ -6,12 +6,49 @@ It displays the toolbar bookmarks, using the same look and feel as the top-most 
 
 No search field, no top-most sites, only bookmarks.
 
-## Example
+![NewTab Bookmarks](public/screenshots/screenshot.png)
 
-These toolbar bookmarks:
+## Bookmarks
 
-![NewTab page with Bookmarks _(newtab-bm)_](public/screenshot-bookmarks-toolbar.png)
+The bookmarks displayed in the page come from the toolbar:
 
-are displayed like that :
+![Toolbar bookmarks](public/screenshots/screenshot--bookmarks-toolbar.png)
 
-![NewTab page with Bookmarks _(newtab-bm)_](public/screenshot.png)
+Subfolders are displayed as popup:
+
+![Subfolder](public/screenshots/screenshot--subfolder.png)
+
+## Labels
+
+Labels can be hidden:
+
+![Hidden labels](public/screenshots/screenshot--without-label.png)
+
+Or only visible on hover:
+
+![Label on hover](public/screenshots/screenshot--label-on-hover.png)
+
+## Layouts
+
+Default layout uses tab-like group title.
+
+An alternative layout is available. It uses blocks:
+
+![Blocks layout](public/screenshots/screenshot--blocks-layout.png)
+
+The blocks layout without labels:
+
+![Blocks layout without labels](public/screenshots/screenshot--blocks-layout-without-label.png)
+
+## Themes
+
+The newtab page follows the chosen Firefox theme.
+
+Dark mode is supported:
+
+![Dark mode](public/screenshots/screenshot--dark-mode.png)
+
+Themes are supported:
+
+![Any theme](public/screenshots/screenshot--theme.png)
+![Any theme](public/screenshots/screenshot--theme2.png)
