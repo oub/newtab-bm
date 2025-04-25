@@ -6,8 +6,12 @@ It displays the toolbar bookmarks, using the same look and feel as the top-most 
 
 No search field, no top-most sites, only bookmarks.
 
-![NewTab page with Bookmarks _(newtab-bm)_](public/screenshot.png)
+## Example
 
-The toolbar bookmarks of the above example:
+These toolbar bookmarks:
 
 ![NewTab page with Bookmarks _(newtab-bm)_](public/screenshot-bookmarks-toolbar.png)
+
+are displayed like that :
+
+![NewTab page with Bookmarks _(newtab-bm)_](public/screenshot.png)
