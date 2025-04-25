@@ -22,5 +22,5 @@
   },
   "permissions": ["bookmarks", "topSites"],
   "optional_permissions": [],
-  "optional_host_permissions": []
+  "host_permissions": ["*://*.*/favicon.icon"]
 }
