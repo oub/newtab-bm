@@ -39,8 +39,7 @@ const assignFaviconsToBookmarks = (
       const url = new URL(bookmarkUrl);
       if (isGoogMaps) {
         // If the URL is a Google Maps link, use a specific favicon
-        bookmark.favicon =
-          "https://www.google.com/s2/favicons?domain_url=maps.google.com&sz=32";
+        bookmark.favicon = "sites/maps.google/favicon.png";
       } else if (topSitesMap.has(url.host)) {
         bookmark.favicon = topSitesMap.get(url.host);
       } else {
