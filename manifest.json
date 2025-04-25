@@ -22,5 +22,11 @@
   },
   "permissions": ["bookmarks", "topSites"],
   "optional_permissions": [],
-  "host_permissions": ["*://*/favicon.ico"]
+  "host_permissions": ["*://*/favicon.ico"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "newtab-bm@oub",
+      "strict_min_version": "109.0"
+    }
+  }
 }
