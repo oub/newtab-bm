@@ -35,7 +35,7 @@
   {/if}
 
   <div class="container">
-    {#each bookmarks as bookmark}
+    {#each bookmarks as bookmark, _ (bookmark.id)}
       {#if bookmark.type === "folder"}
         <Folder {bookmark} />
       {:else if bookmark.type === "bookmark"}
