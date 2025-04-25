@@ -1,6 +1,34 @@
-# NewTab Bookmarks
+# Setup
 
-This Firefox extension is a replacement for the native newtab page.
+## Installation
+
+```
+pnpm i
+```
+
+## Webapp
+
+To build the Svelte webapp, run:
+
+```
+pnpm build --watch
+```
+
+To see it in action, go to `about:debugging#/runtime/this-firefox`, click "Load temporary Add-on..." and select `./manifest.json`.
+
+## Package
+
+To build the webapp and package the extension using web-ext, run:
+
+```
+pnpm package
+```
+
+It generates a zip file in the releases directory.
+
+# About
+
+**NewTab Bookmarks** is Firefox extension is a replacement for the native newtab page.
 
 It displays the toolbar bookmarks, using the same look and feel as the top-most sites of the native newtab page.
 
@@ -8,7 +36,7 @@ No search field, no top-most sites, only bookmarks.
 
 ![NewTab Bookmarks](screenshots/screenshot.png)
 
-## Bookmarks
+## Toolbar Bookmarks
 
 The bookmarks displayed in the page come from the toolbar:
 
@@ -52,3 +80,7 @@ Themes are supported:
 
 ![Any theme](screenshots/screenshot--theme.png)
 ![Any theme](screenshots/screenshot--theme2.png)
+
+```
+
+```
