@@ -26,13 +26,13 @@
 
   load();
 
-  const topBookmarks = $derived(
+  const topGroup = $derived(
     bookmarks.filter(
       (bookmark) =>
         bookmark.type === "bookmark" || bookmark.type === "separator"
     )
   );
-  const bookmarkGroups = $derived(
+  const otherGroups = $derived(
     bookmarks.filter(
       (bookmark) =>
         bookmark.type === "folder" && (bookmark.children?.length ?? 0) > 0
@@ -46,13 +46,9 @@
 </script>
 
 <div class={["bookmarks", groupAppearance]}>
-  <Group bookmarks={topBookmarks} {groupAppearance} forceNoTitle />
-  {#each bookmarkGroups as bookmarkGroup}
-    <Group
-      bookmarks={bookmarkGroup.children}
-      title={bookmarkGroup.title}
-      {groupAppearance}
-    />
+  <Group bookmarks={topGroup} {groupAppearance} forceNoTitle />
+  {#each otherGroups as group}
+    <Group bookmarks={group.children} title={group.title} {groupAppearance} />
   {/each}
 </div>
 
