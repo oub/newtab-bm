@@ -1,7 +1,7 @@
 <script module>
   import { onMount } from "svelte";
   import closeIcon from "../assets/cross-20.svg";
-  import settingsIcon from "../assets/settings-24.svg";
+  import settingsIcon from "../assets/settings-20.svg";
   import { colorScheme } from "./colors";
   import { settings, type GroupAppearance, type LabelMode } from "./settings";
 </script>
@@ -120,9 +120,6 @@
       }
 
       img {
-        width: 20px;
-        height: 20px;
-
         &.dark {
           filter: saturate(0) invert(1);
         }
