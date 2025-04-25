@@ -9,7 +9,7 @@ const storedSettings = localStorage.getItem(STORAGE_KEY);
 
 const initialSettings = storedSettings
   ? JSON.parse(storedSettings)
-  : { labelMode: "all", groupAppearance: "separator", showSettings: true };
+  : { labelMode: "all", groupAppearance: "separator", showSettings: false };
 
 export let settings: Writable<{
   groupAppearance: GroupAppearance;
