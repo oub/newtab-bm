@@ -26,9 +26,8 @@
   .title {
     align-items: center;
     display: flex;
-
     justify-content: center;
-    margin: 8px 0 4px;
+    margin: 0 0 4px;
     text-align: center;
 
     .line-gradient {
