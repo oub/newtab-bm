@@ -1,0 +1,12 @@
+{
+  "name": { "en-US": "NewTab Bookmarks" },
+  "summary": {
+    "en-US": "A NewTab page that displays toolbar bookmarks."
+  },
+  "categories": ["tabs"],
+  "version": {
+    "license": "GPL-3.0-or-later"
+  },
+  "is_experimental": true,
+  "compatibility": ["firefox"]
+}
