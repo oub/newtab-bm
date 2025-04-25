@@ -27,8 +27,14 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 0 0 4px;
     text-align: center;
+
+    &.separator {
+      margin: 8px 0 4px;
+    }
+    &.block {
+      margin: 0 0 8px;
+    }
 
     .line-gradient {
       border-radius: 6px;
@@ -42,6 +48,7 @@
             transparent,
             var(--oub--border-color) 100%
           );
+          margin-right: -1px;
         }
         &.right {
           background: linear-gradient(
@@ -49,6 +56,7 @@
             transparent,
             var(--oub--border-color) 100%
           );
+          margin-left: 1px;
         }
       }
     }
@@ -60,7 +68,6 @@
       font-weight: 500;
       line-height: 1;
       margin-bottom: 4px;
-      padding: 4px 12px 0;
       position: relative;
       white-space: nowrap;
       z-index: 1;
