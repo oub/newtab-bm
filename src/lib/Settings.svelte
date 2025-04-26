@@ -3,22 +3,22 @@
   import closeIcon from "../assets/cross-20.svg";
   import settingsIcon from "../assets/settings-20.svg";
   import { colorScheme } from "./colors";
-  import { settings, type GroupAppearance, type LabelMode } from "./settings";
+  import { settings, type Density, type LabelMode } from "./settings";
 </script>
 
 <script lang="ts">
   let showSettings = $state(false);
-  let groupAppearance: GroupAppearance = $state("separator");
+  let density: Density = $state("medium");
   let labelMode: LabelMode = $state("all");
 
-  onMount(() => ({ labelMode, groupAppearance, showSettings } = $settings));
+  onMount(() => ({ labelMode, density, showSettings } = $settings));
 
   $effect(() => {
     $settings.labelMode = labelMode;
   });
 
   $effect(() => {
-    $settings.groupAppearance = groupAppearance;
+    $settings.density = density;
   });
 
   $effect(() => {
@@ -30,22 +30,23 @@
   <div class="form">
     {#if showSettings}
       <label>
-        <span>Group appearance :</span>
-        <select bind:value={groupAppearance}>
-          <option value="separator">Separator</option>
-          <option value="block">Block</option>
+        <span>Density:</span>
+        <select bind:value={density}>
+          <option value="large">Large</option>
+          <option value="medium">Medium</option>
+          <option value="compact">Compact</option>
         </select>
       </label>
       <label>
-        <span>Labels :</span>
+        <span>Labels:</span>
         <select bind:value={labelMode}>
           <option value="all">All</option>
           <option value="bookmarks">Bookmarks only</option>
           <option value="subfolders">Sub-folders only</option>
           <hr />
-          <option value="hover">On hover</option>
+          <option value="hover">Only on hover</option>
           <hr />
-          <option value="never">Never (compact mode)</option>
+          <option value="never">Never</option>
         </select>
       </label>
     {/if}

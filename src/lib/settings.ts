@@ -1,7 +1,7 @@
 import { writable, type Writable } from "svelte/store";
 
 export type LabelMode = "all" | "bookmarks" | "subfolders" | "hover" | "never";
-export type GroupAppearance = "block" | "separator";
+export type Density = "large" | "medium" | "compact";
 
 const STORAGE_KEY = "newtab-settings";
 
@@ -9,10 +9,10 @@ const storedSettings = localStorage.getItem(STORAGE_KEY);
 
 const initialSettings = storedSettings
   ? JSON.parse(storedSettings)
-  : { labelMode: "all", groupAppearance: "separator", showSettings: false };
+  : { labelMode: "all", density: "medium", showSettings: false };
 
 export let settings: Writable<{
-  groupAppearance: GroupAppearance;
+  density: Density;
   labelMode: LabelMode;
   showSettings: boolean;
 }> = writable(initialSettings);

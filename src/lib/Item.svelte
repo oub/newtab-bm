@@ -56,54 +56,51 @@
 
 <style>
   .item {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 20px 16px 4px;
-    color: inherit;
+    box-sizing: border-box;
+    color: var(--oub--foreground-color);
     display: block;
-    outline: none;
-    text-decoration: none;
-    width: 96px;
+    flex-direction: column;
     height: 128px;
+    justify-content: center;
+    outline: none;
+    padding: 20px 16px 4px;
+    text-decoration: none;
+    transition:
+      height 0.1s ease-in-out,
+      padding 0.1s ease-in-out;
+    width: 96px;
 
     &.no-label {
-      padding: 16px;
       height: 96px;
+      padding: 16px;
     }
 
     &.label-on-hover {
-      --label-text-color: color-mix(
-        in srgb,
-        var(--oub--foreground-color) 0%,
-        transparent
-      );
+      color: color-mix(in srgb, var(--oub--foreground-color) 0%, transparent);
     }
     &:hover {
-      --label-text-color: var(--oub--foreground-color) !important;
+      color: var(--oub--foreground-color) !important;
     }
 
     .tile {
       --size-item-large: 32px;
+      align-items: center;
+      background-color: var(--oub--background-color);
       border-radius: 8px;
       box-shadow: 0 2px 6px #00000026;
-      background-color: var(--oub--background-color);
-      justify-content: center;
-      margin: 0 auto;
-      height: 80px;
-      width: 80px;
       cursor: pointer;
-      position: relative;
-      align-items: center;
-      color: var(--newtab-contextual-text-secondary-color);
       display: flex;
       font-size: 32px;
       font-weight: 200;
-      text-transform: uppercase;
-      width: calc(var(--size-item-large) * 2);
+      height: 80px;
       height: calc(var(--size-item-large) * 2);
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      text-transform: uppercase;
+      width: 80px;
+      width: calc(var(--size-item-large) * 2);
 
       &.light {
         background-color: color-mix(
@@ -121,17 +118,17 @@
       }
 
       .icon-wrapper {
-        width: var(--size-item-large);
         height: var(--size-item-large);
+        width: var(--size-item-large);
 
         .default-icon {
-          background-size: 32px;
-          height: 32px;
-          width: 32px;
           align-items: center;
+          background-size: 32px;
           display: flex;
           font-size: 20px;
+          height: 32px;
           justify-content: center;
+          width: 32px;
         }
 
         .rich-icon {
@@ -150,44 +147,41 @@
         }
 
         .icon {
-          background-size: cover;
           background-position: center center;
           background-repeat: no-repeat;
+          background-size: cover;
           border-radius: 4px;
+          height: 32px;
           position: absolute;
           width: 32px;
-          height: 32px;
         }
       }
     }
 
     .title {
-      color: var(--oub--foreground-color);
-      padding-top: 8px;
       font: caption;
-      text-align: center;
+      padding-top: 8px;
       position: relative;
+      text-align: center;
+      transition: color 0.3s ease-in-out;
 
       .label {
-        color: var(--label-text-color);
-        font: caption;
-        text-align: center;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        white-space: wrap;
-        word-break: break-word;
-        line-height: 1.3;
-        min-height: 2lh;
-        width: 100px;
-        margin: 0 calc(calc(100px - 64px) / -2);
-        padding: 0 4px;
         box-sizing: border-box;
-
+        display: block;
+        font: caption;
         font-family: "Segoe UI", Arial, Helvetica, sans-serif;
         font-size: 12px;
-        font: caption;
+        -webkit-line-clamp: 2;
+        line-height: 1.3;
+        margin: 0 calc(calc(100px - 64px) / -2);
+        min-height: 2lh;
+        overflow: hidden;
+        padding: 0 4px;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: wrap;
+        width: 100px;
+        word-break: break-word;
       }
     }
   }

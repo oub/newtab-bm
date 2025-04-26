@@ -16,15 +16,7 @@
 
   let bookmarks: FaviconedBookmarks[] = $state([]);
 
-  const { groupAppearance } = $derived($settings);
-
-  const load = () =>
-    loadToolbarBookmarks().then((bm) => {
-      bookmarks = bm;
-      $areBookmarksLoaded = true;
-    });
-
-  load();
+  const { density } = $derived($settings);
 
   const topGroup = $derived(
     bookmarks.filter(
@@ -39,16 +31,24 @@
     )
   );
 
+  const load = () =>
+    loadToolbarBookmarks().then((bm) => {
+      bookmarks = bm;
+      $areBookmarksLoaded = true;
+    });
+
+  load();
+
   browser.bookmarks.onChanged.addListener(load);
   browser.bookmarks.onCreated.addListener(load);
   browser.bookmarks.onRemoved.addListener(load);
   browser.bookmarks.onMoved.addListener(load);
 </script>
 
-<div class={["bookmarks", groupAppearance]}>
-  <Group bookmarks={topGroup} {groupAppearance} forceNoTitle />
+<div class={["bookmarks", density]}>
+  <Group bookmarks={topGroup} {density} forceNoTitle />
   {#each otherGroups as group}
-    <Group bookmarks={group.children} title={group.title} {groupAppearance} />
+    <Group bookmarks={group.children} title={group.title} {density} />
   {/each}
 </div>
 
@@ -60,7 +60,7 @@
     gap: 0;
     padding: 0 1rem 1rem;
 
-    &.block {
+    &.large {
       gap: 1rem;
     }
   }

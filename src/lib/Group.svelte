@@ -4,12 +4,12 @@
   import Folder from "./Folder.svelte";
   import GroupTitle from "./GroupTitle.svelte";
   import Separator from "./Separator.svelte";
-  import { type GroupAppearance } from "./settings";
+  import { type Density } from "./settings";
 
   interface Props {
     bookmarks?: (Bookmarks.BookmarkTreeNode & { favicon?: string })[];
     title?: string;
-    groupAppearance: GroupAppearance;
+    density: Density;
     forceTitle?: boolean;
     forceNoTitle?: boolean;
   }
@@ -19,7 +19,7 @@
   let {
     bookmarks = [],
     title,
-    groupAppearance,
+    density,
     forceTitle = false,
     forceNoTitle = false,
   }: Props = $props();
@@ -29,9 +29,9 @@
   );
 </script>
 
-<section class={groupAppearance}>
-  {#if (forceTitle || notEmptyTitle || groupAppearance === "separator") && !forceNoTitle}
-    <GroupTitle {title} {groupAppearance} />
+<section class={density}>
+  {#if (forceTitle || notEmptyTitle || density === "medium") && !forceNoTitle}
+    <GroupTitle {title} {density} />
   {/if}
 
   <div class="container">
@@ -49,11 +49,15 @@
 
 <style>
   section {
+    border: solid 0 transparent;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0;
+    transition: all 0.1s ease-in-out;
 
-    &.block {
+    &.large {
       background-color: color-mix(
         in srgb,
         var(--oub--foreground-color) 2%,

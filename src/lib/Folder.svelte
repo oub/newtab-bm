@@ -45,7 +45,7 @@
   <Group
     bookmarks={bookmark?.children ?? []}
     title={bookmark.title}
-    groupAppearance="block"
+    density="large"
     forceTitle
   />
 </Dialog>
