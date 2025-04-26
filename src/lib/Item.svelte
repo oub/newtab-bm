@@ -163,7 +163,6 @@
       padding-top: 8px;
       position: relative;
       text-align: center;
-      transition: color 0.3s ease-in-out;
 
       .label {
         box-sizing: border-box;
