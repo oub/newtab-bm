@@ -1,7 +1,10 @@
 {
   "name": { "en-US": "NewTab Bookmarks" },
   "summary": {
-    "en-US": "A NewTab page that displays toolbar bookmarks."
+    "en-US": "A NewTab page that displays bookmarks."
+  },
+  "description": {
+    "en-US": "A newtab page replacement that displays the toolbar bookmarks.\n\nNo search field, no top-most sites, only bookmarks."
   },
   "categories": ["tabs"],
   "version": {
