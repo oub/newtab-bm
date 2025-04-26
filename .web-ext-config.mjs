@@ -3,16 +3,18 @@ export default {
   artifactsDir: "./releases",
   build: {
     overwriteDest: true,
+    filename: "{name}-{version}.xpi",
   },
   ignoreFiles: [
+    "addons.mozilla.json",
+    "*config.*",
+    "index.html",
     "node_modules",
     "package*.json",
     "public",
     "releases",
     "src",
-    "index.html",
     "pnpm-lock.yaml",
-    "*.config.*",
-    "tsconfig.*",
+    "screenshots",
   ],
 };
