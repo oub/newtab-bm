@@ -23,12 +23,21 @@ importers:
       '@types/node':
         specifier: ^22.14.1
         version: 22.14.1
+      '@types/webextension-polyfill':
+        specifier: ^0.12.3
+        version: 0.12.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.30.1
         version: 8.30.1(@typescript-eslint/parser@8.30.1(eslint@8.57.1)(typescript@5.7.3))(eslint@8.57.1)(typescript@5.7.3)
       '@typescript-eslint/parser':
         specifier: ^8.30.1
         version: 8.30.1(eslint@8.57.1)(typescript@5.7.3)
+      copy-file-util:
+        specifier: ^1.2.3
+        version: 1.2.3
+      copy-folder-util:
+        specifier: ^1.1.5
+        version: 1.1.5
       eslint-plugin-svelte:
         specifier: ^3.5.1
         version: 3.5.1(eslint@8.57.1)(svelte@5.28.1)
@@ -50,9 +59,9 @@ importers:
       web-ext:
         specifier: ^8.6.0
         version: 8.6.0
-      webextension-polyfill-ts:
-        specifier: ^0.26.0
-        version: 0.26.0
+      webextension-polyfill:
+        specifier: ^0.12.0
+        version: 0.12.0
 
 packages:
 
@@ -459,6 +468,9 @@ packages:
   '@types/node@22.14.1':
     resolution: {integrity: sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==}
 
+  '@types/webextension-polyfill@0.12.3':
+    resolution: {integrity: sha512-F58aDVSeN/MjUGazXo/cPsmR76EvqQhQ1v4x23hFjUX0cfAJYE+JBWwiOGW36/VJGGxoH74sVlRIF3z7SJCKyg==}
+
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
@@ -692,6 +704,9 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
 
+  cli-argv-util@1.2.7:
+    resolution: {integrity: sha512-2Jywvh2hSZpIk04pQjUfUTfrcoDpDrfUA5Cvc8imWzF6HR5OENdqZjRoSAO1hhiPjf2UKZsB2L1m0l7igF1DSA==}
+
   cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
     engines: {node: '>=10'}
@@ -714,6 +729,10 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  color-support@1.1.3:
+    resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
+    hasBin: true
 
   columnify@1.6.0:
     resolution: {integrity: sha512-lomjuFZKfM6MSAnV9aCZC9sc0qGbmZdfygNv+nCpqVkSKdCxCklLtd16O0EILGkImHw9ZpHkAnHaB+8Zxq5W6Q==}
@@ -744,6 +763,14 @@ packages:
   configstore@7.0.0:
     resolution: {integrity: sha512-yk7/5PN5im4qwz0WFZW3PXnzHgPu9mX29Y8uZ3aefe2lBPC1FYttWZRcaW9fKkT0pBCJyuQ2HfbmPVaODi9jcQ==}
     engines: {node: '>=18'}
+
+  copy-file-util@1.2.3:
+    resolution: {integrity: sha512-dlnGuPbPkFX+Q7n1+5HBmqqPLYj0OejBfwFiRvUI/VhCj/feq8VVBUIQlqEnWhPTCKlWd4ezfo7p9zuvPzsGaw==}
+    hasBin: true
+
+  copy-folder-util@1.1.5:
+    resolution: {integrity: sha512-drN3XLFICXt3+cXVdCfKPBtRMzWx4vvzkawEs5f/EtOrssYZ0vWo9WSk5qu/kfKRmxN+ozTtDRFewMP9veM7WQ==}
+    hasBin: true
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -822,6 +849,9 @@ packages:
   define-lazy-prop@3.0.0:
     resolution: {integrity: sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg==}
     engines: {node: '>=12'}
+
+  dna-engine@3.2.7:
+    resolution: {integrity: sha512-f7FWXWS5tj1JGp9uQJFe2tdhmIU1pqcphS5gec2Oovti1dsI7/zDL0hZmdLhLhul/6waiZeZ0f+L9HR6j5d4wA==}
 
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -968,6 +998,10 @@ packages:
   execa@7.2.0:
     resolution: {integrity: sha512-UduyVP7TLB5IcAQl+OzLyLcS/l32W/GLg+AhHJ+ow40FOk2U3SAllPwR44v4vmdFwIWqpdwxxpQbF1n5ta9seA==}
     engines: {node: ^14.18.0 || ^16.14.0 || >=18.0.0}
+
+  fancy-log@2.0.0:
+    resolution: {integrity: sha512-9CzxZbACXMUXW13tS0tI8XsGGmxWzO2DmYrGuBJOJ8k8q2K7hwfJA5qHjuPPe8wtsco33YR9wc+Rlr5wYFvhSA==}
+    engines: {node: '>=10.13.0'}
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -1694,6 +1728,10 @@ packages:
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
+  slash@5.1.0:
+    resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
+    engines: {node: '>=14.16'}
+
   sonic-boom@3.8.1:
     resolution: {integrity: sha512-y4Z8LCDBuum+PBP3lSV7RHrXscqksve/bi0as7mhwVnBW+/wUqKT/2Kb7um8yqcFy0duYbbPxzt89Zy2nOCaxg==}
 
@@ -1950,12 +1988,8 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  webextension-polyfill-ts@0.26.0:
-    resolution: {integrity: sha512-XEFL+aYVEsm/d4RajVwP75g56c/w2aSHnPwgtUv8/nCzbLNSzRQIix6aj1xqFkA5yr7OIDkk3OD/QTnPp8ThYA==}
-    deprecated: This project has moved to @types/webextension-polyfill
-
-  webextension-polyfill@0.8.0:
-    resolution: {integrity: sha512-a19+DzlT6Kp9/UI+mF9XQopeZ+n2ussjhxHJ4/pmIGge9ijCDz7Gn93mNnjpZAk95T4Tae8iHZ6sSf869txqiQ==}
+  webextension-polyfill@0.12.0:
+    resolution: {integrity: sha512-97TBmpoWJEE+3nFBQ4VocyCdLKfw54rFaJ6EVQYLBCXqCIpLSZkwGgASpv4oPt9gdKCJ80RJlcmNzNn008Ag6Q==}
 
   when-exit@2.1.4:
     resolution: {integrity: sha512-4rnvd3A1t16PWzrBUcSDZqcAmsUIy4minDXT/CZ8F2mVDgd65i4Aalimgz1aQkRGU0iH5eT5+6Rx2TK8o443Pg==}
@@ -2351,6 +2385,8 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/webextension-polyfill@0.12.3': {}
+
   '@types/yauzl@2.10.3':
     dependencies:
       '@types/node': 22.14.1
@@ -2634,6 +2670,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  cli-argv-util@1.2.7:
+    dependencies:
+      slash: 5.1.0
+
   cli-boxes@3.0.0: {}
 
   cliui@8.0.1:
@@ -2651,6 +2691,8 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  color-support@1.1.3: {}
 
   columnify@1.6.0:
     dependencies:
@@ -2685,6 +2727,21 @@ snapshots:
       dot-prop: 9.0.0
       graceful-fs: 4.2.11
       xdg-basedir: 5.1.0
+
+  copy-file-util@1.2.3:
+    dependencies:
+      chalk: 5.4.1
+      cli-argv-util: 1.2.7
+      dna-engine: 3.2.7
+      fancy-log: 2.0.0
+      slash: 5.1.0
+
+  copy-folder-util@1.1.5:
+    dependencies:
+      chalk: 5.4.1
+      cli-argv-util: 1.2.7
+      fancy-log: 2.0.0
+      slash: 5.1.0
 
   core-util-is@1.0.3: {}
 
@@ -2745,6 +2802,8 @@ snapshots:
       clone: 1.0.4
 
   define-lazy-prop@3.0.0: {}
+
+  dna-engine@3.2.7: {}
 
   doctrine@3.0.0:
     dependencies:
@@ -2957,6 +3016,10 @@ snapshots:
       onetime: 6.0.0
       signal-exit: 3.0.7
       strip-final-newline: 3.0.0
+
+  fancy-log@2.0.0:
+    dependencies:
+      color-support: 1.1.3
 
   fast-deep-equal@3.1.3: {}
 
@@ -3633,6 +3696,8 @@ snapshots:
 
   signal-exit@3.0.7: {}
 
+  slash@5.1.0: {}
+
   sonic-boom@3.8.1:
     dependencies:
       atomic-sleep: 1.0.0
@@ -3892,11 +3957,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  webextension-polyfill-ts@0.26.0:
-    dependencies:
-      webextension-polyfill: 0.8.0
-
-  webextension-polyfill@0.8.0: {}
+  webextension-polyfill@0.12.0: {}
 
   when-exit@2.1.4: {}
 
