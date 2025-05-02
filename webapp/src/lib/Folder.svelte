@@ -28,12 +28,7 @@
 </Hoverable>
 
 <Dialog bind:this={dialog}>
-	<Group
-		bookmarks={bookmark?.children ?? []}
-		title={bookmark.title}
-		density="large"
-		forceTitle
-	/>
+	<Group bookmarks={bookmark?.children ?? []} title={bookmark.title} density="large" forceTitle />
 </Dialog>
 
 <style>
@@ -45,9 +40,9 @@
 		border: none;
 		bottom: 0;
 		color: var(--oub--foreground-color);
+		display: flex;
 		font-size: 24px;
 		font-weight: 600;
-		display: flex;
 		justify-content: center;
 		left: 0;
 		outline: none;

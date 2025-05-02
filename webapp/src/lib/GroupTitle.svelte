@@ -66,27 +66,19 @@
 
 			.line-gradient {
 				&.left {
-					background: linear-gradient(
-						to right,
-						transparent,
-						var(--oub--border-color) 100%
-					);
+					background: linear-gradient(to right, transparent, var(--oub--border-color) 100%);
 					margin-right: -1px;
 				}
 				&.right {
-					background: linear-gradient(
-						to left,
-						transparent,
-						var(--oub--border-color) 100%
-					);
+					background: linear-gradient(to left, transparent, var(--oub--border-color) 100%);
 					margin-left: 1px;
 				}
 			}
 
 			.badge {
 				font: caption;
-				font-size: 12px;
 				font-family: system-ui, sans-serif;
+				font-size: 12px;
 				font-size: 14px;
 				font-size: 13.872px;
 				font-weight: 500;

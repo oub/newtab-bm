@@ -3,11 +3,7 @@
 	import closeIcon from '../assets/cross-16.svg';
 	import settingsIcon from '../assets/settings-16.svg';
 	import { colorScheme } from './colors';
-	import {
-		settings,
-		type DensitySettings,
-		type LabelsSettings,
-	} from './settings';
+	import { settings, type DensitySettings, type LabelsSettings } from './settings';
 </script>
 
 <script lang="ts">
@@ -135,35 +131,23 @@
 						width: fit-content;
 
 						&.light {
-							border: 1px solid
-								color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+							border: 1px solid color-mix(in srgb, var(--oub--border-color) 80%, transparent);
 						}
 						&.dark {
-							border: 1px solid
-								color-mix(
-									in srgb,
-									var(--oub--foreground-color) 30%,
-									transparent
-								);
+							border: 1px solid color-mix(in srgb, var(--oub--foreground-color) 30%, transparent);
 						}
 						&:not(.light):not(.dark) {
 							@media (prefers-color-scheme: light) {
-								border: 1px solid
-									color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+								border: 1px solid color-mix(in srgb, var(--oub--border-color) 80%, transparent);
 							}
 							@media (prefers-color-scheme: dark) {
-								border: 1px solid
-									color-mix(
-										in srgb,
-										var(--oub--foreground-color) 30%,
-										transparent
-									);
+								border: 1px solid color-mix(in srgb, var(--oub--foreground-color) 30%, transparent);
 							}
 						}
 
 						&:focus {
-							outline: none;
 							box-shadow: 0 0 0 2px var(--oub--foreground-color);
+							outline: none;
 						}
 					}
 				}

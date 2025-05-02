@@ -15,23 +15,15 @@
 	const { density } = $derived($settings);
 
 	const topGroup = $derived(
-		bookmarks.filter(
-			(bookmark) =>
-				bookmark.type === 'bookmark' || bookmark.type === 'separator'
-		)
+		bookmarks.filter((bookmark) => bookmark.type === 'bookmark' || bookmark.type === 'separator')
 	);
 	const otherGroups = $derived(
-		bookmarks.filter(
-			(bookmark) =>
-				bookmark.type === 'folder' && (bookmark.children?.length ?? 0) > 0
-		)
+		bookmarks.filter((bookmark) => bookmark.type === 'folder' && (bookmark.children?.length ?? 0) > 0)
 	);
 
 	const load = async () => {
 		bookmarks = await loadToolbarBookmarks();
-		console.log(
-			`${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`
-		);
+		console.log(`${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`);
 	};
 
 	load();

@@ -31,11 +31,7 @@
 		}
 
 		&:hover {
-			background-color: color-mix(
-				in srgb,
-				var(--oub--foreground-color) 5%,
-				var(--oub--background-color)
-			);
+			background-color: color-mix(in srgb, var(--oub--foreground-color) 5%, var(--oub--background-color));
 			@media (prefers-color-scheme: dark) {
 				background-color: color-mix(
 					in srgb,
