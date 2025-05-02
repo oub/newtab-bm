@@ -12,13 +12,12 @@ dist
 dist-ssr
 *.local
 .svelte-kit
-temp
+package
 index.html
 !/**/index.html
 
 # Editor directories and files
 .vscode/*
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -26,4 +25,3 @@ index.html
 *.njsproj
 *.sln
 *.sw?
-.vscode/extensions.json

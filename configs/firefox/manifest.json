@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "NewTab Bookmarks",
+  "short_name": "newtab-bm",
+  "version": "0.0.0.2",
+  "description": "A newtab page replacement that displays the toolbar bookmarks.",
+  "author": "Olivier Cuenot",
+  "homepage_url": "https://github.com/oub/newtab-bm",
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["bookmarks", "topSites"],
+  "optional_permissions": [],
+  "chrome_settings_overrides": {
+    "homepage": "index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "newtab-bm@oub",
+      "strict_min_version": "109.0"
+    }
+  }
+}

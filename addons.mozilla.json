@@ -1,15 +1,15 @@
 {
-  "name": { "en-US": "NewTab Bookmarks" },
-  "summary": {
-    "en-US": "A newtab page that displays bookmarks."
-  },
-  "description": {
-    "en-US": "A newtab page replacement that displays the toolbar bookmarks.\nNo search field, no top-most sites, only bookmarks."
-  },
-  "categories": ["tabs"],
-  "version": {
-    "license": "GPL-3.0-or-later"
-  },
-  "is_experimental": true,
-  "compatibility": ["firefox"]
+	"name": { "en-US": "NewTab Bookmarks" },
+	"summary": {
+		"en-US": "A newtab page that displays bookmarks."
+	},
+	"description": {
+		"en-US": "A newtab page replacement that displays the toolbar bookmarks.\nNo search field, no top-most sites, only bookmarks."
+	},
+	"categories": ["tabs"],
+	"version": {
+		"license": "GPL-3.0-or-later"
+	},
+	"is_experimental": true,
+	"compatibility": ["firefox"]
 }
