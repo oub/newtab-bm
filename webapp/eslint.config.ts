@@ -39,6 +39,7 @@ export default [
 		},
 		plugins: {
 			svelte,
+			'@typescript-eslint': typescript,
 		},
 		rules: {
 			...svelte.configs.recommended,
