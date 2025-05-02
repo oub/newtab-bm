@@ -25,3 +25,6 @@ index.html
 *.njsproj
 *.sln
 *.sw?
+configs/chrome.crx
+configs/chrome.pem
+webapp/index.html
