@@ -36,7 +36,10 @@
 		<div class="icon-wrapper">
 			<div></div>
 			<div class="site-icon default-icon rich-icon">
-				<div class="icon" style:background-image={!children ? `url(${imgSrc})` : undefined}>
+				<div
+					class="icon"
+					style:background-image={!children ? `url(${imgSrc})` : undefined}
+				>
 					{@render children?.()}
 				</div>
 			</div>
@@ -82,8 +85,16 @@
 		}
 
 		.tile {
-			--title--background-color-light: color-mix(in srgb, var(--oub--background-color) 0%, #fff);
-			--title--background-color-dark: color-mix(in srgb, var(--oub--foreground-color) 10%, transparent);
+			--title--background-color-light: color-mix(
+				in srgb,
+				var(--oub--background-color) 0%,
+				#fff
+			);
+			--title--background-color-dark: color-mix(
+				in srgb,
+				var(--oub--foreground-color) 10%,
+				transparent
+			);
 			--size-item-large: 32px;
 
 			align-items: center;

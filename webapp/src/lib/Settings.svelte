@@ -3,7 +3,11 @@
 	import closeIcon from '../assets/cross-16.svg';
 	import settingsIcon from '../assets/settings-16.svg';
 	import { colorScheme } from './colors';
-	import { settings, type DensitySettings, type LabelsSettings } from './settings';
+	import {
+		settings,
+		type DensitySettings,
+		type LabelsSettings,
+	} from './settings';
 </script>
 
 <script lang="ts">
@@ -77,7 +81,12 @@
 
 			align-items: center;
 			background-color: var(--oub--background-color);
-			border-top: 1px solid var(--oub--border-color);
+			border-top: 1px solid
+				color-mix(
+					in srgb,
+					var(--oub--border-color) 50%,
+					var(--oub--background-color)
+				);
 			bottom: 0;
 			box-shadow: 0 0 0 0 #0000;
 			display: flex;
@@ -131,17 +140,29 @@
 						width: fit-content;
 
 						&.light {
-							border: 1px solid color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+							border: 1px solid
+								color-mix(in srgb, var(--oub--border-color) 80%, transparent);
 						}
 						&.dark {
-							border: 1px solid color-mix(in srgb, var(--oub--foreground-color) 30%, transparent);
+							border: 1px solid
+								color-mix(
+									in srgb,
+									var(--oub--foreground-color) 30%,
+									transparent
+								);
 						}
 						&:not(.light):not(.dark) {
 							@media (prefers-color-scheme: light) {
-								border: 1px solid color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+								border: 1px solid
+									color-mix(in srgb, var(--oub--border-color) 80%, transparent);
 							}
 							@media (prefers-color-scheme: dark) {
-								border: 1px solid color-mix(in srgb, var(--oub--foreground-color) 30%, transparent);
+								border: 1px solid
+									color-mix(
+										in srgb,
+										var(--oub--foreground-color) 30%,
+										transparent
+									);
 							}
 						}
 
@@ -169,18 +190,20 @@
 		z-index: 5;
 
 		&.open {
-			bottom: 5px;
+			bottom: 15px;
 			opacity: 0.4;
 			position: fixed;
-			right: 5px;
+			right: 15px;
 		}
 		&.close {
 			opacity: 0.8;
-			---position: absolute;
-			---right: calc(var(--extra-spacing) + 5px);
 		}
 		&:hover {
-			background-color: var(--oub--border-color);
+			background-color: color-mix(
+				in srgb,
+				var(--oub--border-color) 50%,
+				var(--oub--background-color)
+			);
 			opacity: 1;
 		}
 

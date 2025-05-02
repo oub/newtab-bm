@@ -12,7 +12,7 @@ export const colorScheme: Writable<ColorScheme> = writable('unset');
 export const getBorderColor = (
 	foregroundColor: string,
 	backgroundColor: string
-): string => `color-mix(in srgb, ${foregroundColor} 10%, ${backgroundColor})`;
+): string => `color-mix(in srgb, ${foregroundColor} 40%, ${backgroundColor})`;
 
 export const retrieveColors = (updateInfo?: Theme.ThemeUpdateInfo) => {
 	if (Browser.theme) {

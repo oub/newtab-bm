@@ -28,7 +28,12 @@
 </Hoverable>
 
 <Dialog bind:this={dialog}>
-	<Group bookmarks={bookmark?.children ?? []} title={bookmark.title} density="large" forceTitle />
+	<Group
+		bookmarks={bookmark?.children ?? []}
+		title={bookmark.title}
+		density="large"
+		forceTitle
+	/>
 </Dialog>
 
 <style>

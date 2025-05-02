@@ -66,37 +66,40 @@
 
 			.line-gradient {
 				&.left {
-					background: linear-gradient(to right, transparent, var(--oub--border-color) 100%);
-					margin-right: -1px;
+					background: linear-gradient(
+						to right,
+						transparent,
+						var(--oub--border-color) 100%
+					);
 				}
 				&.right {
-					background: linear-gradient(to left, transparent, var(--oub--border-color) 100%);
-					margin-left: 1px;
+					background: linear-gradient(
+						to left,
+						transparent,
+						var(--oub--border-color) 100%
+					);
 				}
 			}
 
 			.badge {
+				border-radius: 16px 16px 0 0;
 				font: caption;
 				font-family: system-ui, sans-serif;
-				font-size: 12px;
-				font-size: 14px;
-				font-size: 13.872px;
-				font-weight: 500;
+				font-size: 13px;
+				font-weight: 600;
 				padding: 4px 12px 0;
 
 				&::before {
 					border: solid 1px var(--oub--border-color);
 					border-bottom: 0;
-					border-radius: 6px 6px 0 0;
-					border-radius: 10px 10px 0 0;
 					border-radius: 16px 16px 0 0;
 					content: '';
 					height: calc(50% + 1px);
-					left: 0;
+					left: -1px;
 					position: absolute;
+					right: -1px;
 					top: 0;
-					width: 100%;
-					z-index: -1;
+					z-index: -2;
 				}
 			}
 		}

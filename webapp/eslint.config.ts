@@ -27,6 +27,17 @@ export default [
 		rules: {
 			'no-unused-vars': 'warn',
 			'@typescript-eslint/no-explicit-any': 'warn',
+			'max-len': [
+				'error',
+				{
+					code: 120,
+					tabWidth: 4,
+					ignoreUrls: true,
+					ignoreStrings: true,
+					ignoreTemplateLiterals: true,
+					ignoreComments: true,
+				},
+			],
 		},
 	},
 	{
@@ -43,6 +54,17 @@ export default [
 		},
 		rules: {
 			...svelte.configs.recommended,
+			'max-len': [
+				'error',
+				{
+					code: 120,
+					tabWidth: 4,
+					ignoreUrls: true,
+					ignoreStrings: true,
+					ignoreTemplateLiterals: true,
+					ignoreComments: true,
+				},
+			],
 		},
 	},
 ];
