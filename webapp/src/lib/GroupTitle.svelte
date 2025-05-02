@@ -1,21 +1,30 @@
 <script module>
-	import { type DensitySettings } from './settings';
+	import { settings } from './settings';
 
 	interface Props {
 		title?: string;
-		showBorder?: boolean;
-		density: DensitySettings;
 	}
 </script>
 
 <script lang="ts">
-	let { title, density }: Props = $props();
+	let { title }: Props = $props();
+
+	const { density, labels } = $derived($settings);
 </script>
 
 <div class={['title', density]}>
 	<div class="line-gradient left"></div>
 	{#if density === 'large' || (title !== undefined && title.trim().length > 0)}
-		<div class="badge">
+		<div
+			class={[
+				'badge',
+				{
+					'no-label': labels === 'never',
+					'label-on-hover': labels === 'hover',
+					label: labels === 'always',
+				},
+			]}
+		>
 			{@html (title?.trim().length ?? 0) > 0 ? title : '&nbsp;'}
 		</div>
 	{/if}
@@ -85,9 +94,17 @@
 				border-radius: 16px 16px 0 0;
 				font: caption;
 				font-family: system-ui, sans-serif;
-				font-size: 13px;
-				font-weight: 600;
 				padding: 4px 12px 0;
+
+				&.no-label,
+				&.label-on-hover {
+					font-size: 12px;
+					font-weight: 500;
+				}
+				&.label {
+					font-size: 13px;
+					font-weight: 600;
+				}
 
 				&::before {
 					border: solid 1px var(--oub--border-color);
