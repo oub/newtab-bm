@@ -49,6 +49,7 @@
 		font-weight: 600;
 		justify-content: center;
 		left: 0;
+		line-height: 0;
 		outline: none;
 		position: absolute;
 		right: 0;
