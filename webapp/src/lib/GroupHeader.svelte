@@ -39,7 +39,6 @@
 		transition: margin 0.1s ease-in-out;
 
 		h1 {
-			color: color-mix(in srgb, var(--oub--foreground-color) 50%, transparent);
 			color: var(--oub--foreground-color);
 			font: caption;
 			font-weight: 500;
@@ -104,6 +103,11 @@
 
 				&.no-label,
 				&.label-on-hover {
+					color: color-mix(
+						in srgb,
+						var(--oub--foreground-color) 50%,
+						transparent
+					);
 					font-size: 12px;
 					font-weight: 500;
 				}
