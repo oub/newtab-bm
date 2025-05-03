@@ -54,6 +54,8 @@
 
 <style>
 	css {
+		background-color: var(--oub--background-color);
+		color: var(--oub--foreground-color);
 		display: contents;
 
 		@media (prefers-color-scheme: light) {
