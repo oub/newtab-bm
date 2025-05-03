@@ -15,8 +15,8 @@
 		"clean:firefox": "rimraf package/firefox",
 		"clean:chrome": "rimraf package/chrome",
 		"package": "npm run package:firefox && npm run package:chrome",
-		"package:firefox": "npm run build:firefox && npm run clean:firefox && copy-file configs/firefox/manifest.json package/firefox/manifest.json && copy-file LICENSE package/firefox/LICENSE && copy-file README.md package/firefox/README.md && copy-folder webapp/dist package/firefox && copy-folder icons/ package/firefox/icons",
-		"package:chrome": "npm run build:chrome && npm run clean:chrome && copy-file configs/chrome/manifest.json package/chrome/manifest.json && copy-file LICENSE package/chrome/LICENSE && copy-file README.md package/chrome/README.md && copy-folder webapp/dist package/chrome && copy-folder icons package/chrome/icons",
+		"package:firefox": "npm run build:firefox && npm run clean:firefox && copy-file configs/firefox/manifest.json package/firefox/manifest.json && copy-file LICENSE package/firefox/LICENSE && copy-folder webapp/dist package/firefox && copy-folder icons/ package/firefox/icons",
+		"package:chrome": "npm run build:chrome && npm run clean:chrome && copy-file configs/chrome/manifest.json package/chrome/manifest.json && copy-file LICENSE package/chrome/LICENSE && copy-folder webapp/dist package/chrome && copy-folder icons package/chrome/icons",
 		"release": "npm run release:firefox && npm run release:chrome",
 		"release:firefox": "npm run package:firefox && web-ext build --source-dir package/firefox --artifacts-dir releases --filename {name}-{version}-firefox.xpi --overwrite-dest",
 		"release:chrome": "npm run package:chrome && web-ext build --source-dir package/chrome --artifacts-dir releases --filename {name}-{version}-chrome.zip --overwrite-dest"
