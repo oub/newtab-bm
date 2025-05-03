@@ -13,6 +13,7 @@
 	let bookmarks: FaviconedBookmark[] = $state([]);
 
 	const { density } = $derived($settings);
+	const densityCssClass = $derived(`density-${density}`);
 
 	const topGroup = $derived(
 		bookmarks.filter(
@@ -40,7 +41,7 @@
 	Browser.bookmarks.onMoved.addListener(load);
 </script>
 
-<div class={['bookmarks', density]}>
+<div class={['bookmarks', densityCssClass]}>
 	<Group bookmarks={topGroup} {density} forceNoTitle />
 	{#each otherGroups as group}
 		<Group bookmarks={group.children} title={group.title} {density} />
@@ -55,22 +56,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		min-height: 100vh;
-
-		outline: solid 3px blue;
-		overflow: auto;
-		overflow: visible;
-		position: relative;
-
-		/** - -  */
-
-		align-items: center;
-		display: flex;
-		flex-direction: column;
 		gap: 0;
-		padding: 0 1rem 1rem;
+		min-height: 100vh;
+		padding: 1rem 1rem calc(1rem + 43px);
 
-		&.large {
+		&.density-large {
 			gap: 1rem;
 		}
 	}
