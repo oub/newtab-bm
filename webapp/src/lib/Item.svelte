@@ -5,13 +5,12 @@
 
 	interface Props {
 		label?: string;
-		imgSrc?: string;
 		children?: Snippet;
 	}
 </script>
 
 <script lang="ts">
-	let { label, imgSrc, children }: Props = $props();
+	let { label, children }: Props = $props();
 
 	const labelsSettings = $derived($settings.labels);
 	const themeClasses = $derived({
@@ -31,17 +30,7 @@
 	title={labelsSettings === 'never' ? label : undefined}
 >
 	<dt class={['tile', themeClasses]} aria-hidden="true">
-		<div class="icon-wrapper">
-			<!-- <div></div> -->
-			<div class="site-icon default-icon rich-icon">
-				<div
-					class="icon"
-					style:background-image={!children ? `url(${imgSrc})` : undefined}
-				>
-					{@render children?.()}
-				</div>
-			</div>
-		</div>
+		<div class="icon">{@render children?.()}</div>
 	</dt>
 	{#if labelsSettings !== 'never'}
 		<dd>
@@ -123,45 +112,10 @@
 				}
 			}
 
-			.icon-wrapper {
+			.icon {
+				border-radius: calc(var(--tile--icon-size) / 8);
 				height: var(--tile--icon-size);
 				width: var(--tile--icon-size);
-
-				.default-icon {
-					align-items: center;
-					background-size: var(--tile--icon-size);
-					display: flex;
-					font-size: 20px;
-					height: var(--tile--icon-size);
-					justify-content: center;
-					width: var(--tile--icon-size);
-				}
-
-				.rich-icon {
-					background-size: cover;
-					height: 100%;
-					inset-inline-start: 0;
-					top: 0;
-					width: 100%;
-				}
-				.site-icon {
-					background-color: var(--newtab-background-color-secondary);
-					background-position: center center;
-					background-repeat: no-repeat;
-					border-radius: calc(var(--tile--icon-size) / 8);
-					position: absolute;
-				}
-
-				.icon {
-					background-position: center center;
-					background-repeat: no-repeat;
-					background-size: cover;
-					border-radius: 4px;
-					border-radius: calc(var(--tile--icon-size) / 8);
-					height: var(--tile--icon-size);
-					position: absolute;
-					width: var(--tile--icon-size);
-				}
 			}
 		}
 
@@ -178,6 +132,7 @@
 				font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
 				font-size: 12px;
 				-webkit-line-clamp: 2;
+				line-clamp: 2;
 				line-height: 1.3;
 				margin: 0 calc(calc(100px - 64px) / -2);
 				max-height: calc(24px * 1.3);
