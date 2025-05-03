@@ -1,10 +1,8 @@
-<div class="separator"></div>
+<hr />
 
 <style>
-	.separator {
-		background-color: var(--newtab-background-color-secondary);
+	hr {
 		height: 1px;
-		margin: 0;
 		width: 32px;
 	}
 </style>
