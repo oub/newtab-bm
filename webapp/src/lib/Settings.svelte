@@ -125,13 +125,14 @@
 					}
 
 					select {
+						all: revert;
 						background-color: var(--oub--background-color);
 						border-radius: 4px;
 						color: var(--oub--foreground-color);
 						font: caption;
 						font-size: 12px;
 						font-size: 13.3333px;
-						padding: 0.3rem;
+						padding: 0.3rem 1.5rem 0.3rem 0.6rem;
 						width: fit-content;
 
 						&.light {
