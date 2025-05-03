@@ -35,8 +35,8 @@
 	});
 </script>
 
-<div class="settings">
-	<div class={['bar', { shown: showSettings }]}>
+<div class={['settings', { open: showSettings }]}>
+	<div class="bar">
 		<div class="form">
 			<label>
 				<span>Density:</span>
@@ -99,11 +99,6 @@
 			transition:
 				transform 250ms cubic-bezier(0.46, 0.03, 0.52, 0.96),
 				box-shadow 250ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
-
-			&.shown {
-				box-shadow: 0 2px 14px 0 #0003;
-				transform: translateY(0%);
-			}
 
 			.form {
 				align-items: center;
@@ -173,6 +168,11 @@
 					}
 				}
 			}
+		}
+
+		&.open .bar {
+			box-shadow: 0 2px 14px 0 #0003;
+			transform: translateY(0%);
 		}
 	}
 
