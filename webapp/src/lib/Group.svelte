@@ -75,8 +75,6 @@
 			flex-wrap: wrap;
 			gap: 0;
 			justify-content: center;
-			margin: 0;
-			padding: 0;
 		}
 	}
 </style>

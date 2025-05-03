@@ -167,7 +167,6 @@
 
 		dd {
 			font: caption;
-			margin-inline-start: unset;
 			padding-top: 8px;
 			position: relative;
 			text-align: center;
