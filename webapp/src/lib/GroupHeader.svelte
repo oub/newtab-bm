@@ -42,8 +42,6 @@
 		transition: margin 0.1s ease-in-out;
 
 		hr {
-			border: none;
-			border-radius: 6px;
 			height: 1px;
 			width: 100%;
 		}
