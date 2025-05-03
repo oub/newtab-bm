@@ -63,10 +63,10 @@
 
 		&.label-on-hover {
 			color: color-mix(in srgb, var(--oub--foreground-color) 0%, transparent);
-		}
 
-		&:hover {
-			color: var(--oub--foreground-color);
+			&:hover {
+				color: var(--oub--foreground-color);
+			}
 		}
 
 		dt {
