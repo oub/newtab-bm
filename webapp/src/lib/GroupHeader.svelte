@@ -19,7 +19,6 @@
 </script>
 
 <hgroup class={`density-${density}`}>
-	<hr class="left" />
 	{#if density === 'large' || (title !== undefined && title.trim().length > 0)}
 		<h1
 			class={{
@@ -27,10 +26,9 @@
 				'label-on-hover': labels === 'hover',
 			}}
 		>
-			{@html (title?.trim().length ?? 0) > 0 ? title : '&nbsp;'}
+			<span>{@html (title?.trim().length ?? 0) > 0 ? title : '&nbsp;'}</span>
 		</h1>
 	{/if}
-	<hr class="right" />
 </hgroup>
 
 <style>
@@ -38,13 +36,7 @@
 		align-items: center;
 		display: flex;
 		justify-content: center;
-		text-align: center;
 		transition: margin 0.1s ease-in-out;
-
-		hr {
-			height: 1px;
-			width: 100%;
-		}
 
 		h1 {
 			color: color-mix(in srgb, var(--oub--foreground-color) 50%, transparent);
@@ -75,21 +67,31 @@
 		&.density-medium {
 			margin: 8px 0 4px;
 
-			hr {
-				&.left {
-					background: linear-gradient(
-						to right,
-						transparent,
-						var(--oub--border-color) 100%
-					);
-				}
-				&.right {
-					background: linear-gradient(
-						to left,
-						transparent,
-						var(--oub--border-color) 100%
-					);
-				}
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				height: 1px;
+				margin-top: -1px;
+				width: 100%;
+			}
+
+			&::before {
+				background: linear-gradient(
+					to right,
+					transparent,
+					var(--oub--border-color) 100%
+				);
+				border-radius: 50% 0 1px 50%;
+			}
+
+			&::after {
+				background: linear-gradient(
+					to left,
+					transparent,
+					var(--oub--border-color) 100%
+				);
+				border-radius: 0 50% 50% 1px;
 			}
 
 			h1 {
@@ -106,7 +108,7 @@
 					font-weight: 500;
 				}
 
-				&::before {
+				span::before {
 					border: solid 1px var(--oub--border-color);
 					border-bottom: 0;
 					border-radius: 16px 16px 0 0;
