@@ -36,27 +36,27 @@ It displays the toolbar bookmarks, using the same look and feel as the top-most 
 
 No search field, no top-most sites, only bookmarks.
 
-![NewTab Bookmarks](screenshots/screenshot.png)
+![NewTab Bookmarks](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot.png)
 
 ## Toolbar Bookmarks
 
 The bookmarks displayed in the page come from the toolbar:
 
-![Toolbar bookmarks](screenshots/screenshot--bookmarks-toolbar.png)
+![Toolbar bookmarks](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--bookmarks-toolbar.png)
 
 Subfolders are displayed as popup:
 
-![Subfolder](screenshots/screenshot--subfolder.png)
+![Subfolder](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--subfolder.png)
 
 ## Labels
 
 Labels can be hidden:
 
-![Hidden labels](screenshots/screenshot--without-label.png)
+![Hidden labels](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--without-label.png)
 
 Or only visible on hover:
 
-![Label on hover](screenshots/screenshot--label-on-hover.png)
+![Label on hover](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--label-on-hover.png)
 
 ## Layouts
 
@@ -64,11 +64,11 @@ Default layout uses tab-like group title.
 
 An alternative layout is available. It uses blocks:
 
-![Blocks layout](screenshots/screenshot--blocks-layout.png)
+![Blocks layout](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--blocks-layout.png)
 
 The blocks layout without labels:
 
-![Blocks layout without labels](screenshots/screenshot--blocks-layout-without-label.png)
+![Blocks layout without labels](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--blocks-layout-without-label.png)
 
 ## Themes
 
@@ -76,12 +76,12 @@ The newtab page follows the chosen Firefox theme.
 
 Dark mode is supported:
 
-![Dark mode](screenshots/screenshot--dark-mode.png)
+![Dark mode](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--dark-mode.png)
 
 Themes are supported:
 
-![Any theme](screenshots/screenshot--theme.png)
-![Any theme](screenshots/screenshot--theme2.png)
+![Any theme](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--theme.png)
+![Any theme](https://raw.githubusercontent.com/oub/newtab-bm/refs/heads/main/screenshots/screenshot--theme2.png)
 
 ```
 
