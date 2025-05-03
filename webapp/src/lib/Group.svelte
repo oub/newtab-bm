@@ -2,7 +2,7 @@
 	import Bookmark from './Bookmark.svelte';
 	import { type FaviconedBookmark } from './bookmarks';
 	import Folder from './Folder.svelte';
-	import GroupTitle from './GroupTitle.svelte';
+	import GroupHeader from './GroupHeader.svelte';
 	import Separator from './Separator.svelte';
 	import { type DensitySettings } from './settings';
 
@@ -29,12 +29,12 @@
 	);
 </script>
 
-<section class={density}>
+<section class={`density-${density}`}>
 	{#if (forceTitle || notEmptyTitle || density === 'medium') && !forceNoTitle}
-		<GroupTitle {title} />
+		<GroupHeader {title} {density} />
 	{/if}
 
-	<div class="container">
+	<ol>
 		{#each bookmarks as bookmark, _ (bookmark.id)}
 			{#if bookmark.type === 'folder'}
 				<Folder {bookmark} />
@@ -44,7 +44,7 @@
 				<Separator />
 			{/if}
 		{/each}
-	</div>
+	</ol>
 </section>
 
 <style>
@@ -57,7 +57,7 @@
 		padding: 0;
 		transition: all 0.1s ease-in-out;
 
-		&.large {
+		&.density-large {
 			background-color: color-mix(
 				in srgb,
 				var(--oub--foreground-color) 2%,
@@ -69,12 +69,14 @@
 			padding: 15px;
 		}
 
-		.container {
+		ol {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			gap: 0;
 			justify-content: center;
+			margin: 0;
+			padding: 0;
 		}
 	}
 </style>

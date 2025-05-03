@@ -1,67 +1,71 @@
 <script module>
-	import { settings } from './settings';
+	import {
+		settings,
+		type DensitySettings,
+		type LabelsSettings,
+	} from './settings';
 
 	interface Props {
 		title?: string;
+		density?: DensitySettings;
 	}
 </script>
 
 <script lang="ts">
-	let { title }: Props = $props();
+	let { title, density: densityProp }: Props = $props();
 
-	const { density, labels } = $derived($settings);
+	const labels: LabelsSettings = $derived($settings.labels);
+	const density: DensitySettings = $derived(densityProp ?? $settings.density);
 </script>
 
-<div class={['title', density]}>
-	<div class="line-gradient left"></div>
+<hgroup class={`density-${density}`}>
+	<hr class="left" />
 	{#if density === 'large' || (title !== undefined && title.trim().length > 0)}
-		<div
-			class={[
-				'badge',
-				{
-					'no-label': labels === 'never',
-					'label-on-hover': labels === 'hover',
-					label: labels === 'always',
-				},
-			]}
+		<h1
+			class={{
+				'no-label': labels === 'never',
+				'label-on-hover': labels === 'hover',
+			}}
 		>
 			{@html (title?.trim().length ?? 0) > 0 ? title : '&nbsp;'}
-		</div>
+		</h1>
 	{/if}
-	<div class="line-gradient right"></div>
-</div>
+	<hr class="right" />
+</hgroup>
 
 <style>
-	.title {
+	hgroup {
 		align-items: center;
 		display: flex;
 		justify-content: center;
 		text-align: center;
 		transition: margin 0.1s ease-in-out;
 
-		.line-gradient {
+		hr {
+			border: none;
 			border-radius: 6px;
 			height: 1px;
 			width: 100%;
 		}
 
-		.badge {
+		h1 {
 			color: color-mix(in srgb, var(--oub--foreground-color) 50%, transparent);
 			color: var(--oub--foreground-color);
 			font: caption;
 			font-weight: 500;
 			line-height: 1;
-			margin-bottom: 4px;
+			margin: 0 0 4px;
+			padding: 0;
 			position: relative;
 			transition: all 0.1s ease-in-out;
 			white-space: nowrap;
 			z-index: 1;
 		}
 
-		&.large {
+		&.density-large {
 			margin: 0 0 8px;
 
-			.badge {
+			h1 {
 				font-family: system-ui;
 				font-size: 16px;
 				font-weight: 600;
@@ -70,10 +74,10 @@
 			}
 		}
 
-		&.medium {
+		&.density-medium {
 			margin: 8px 0 4px;
 
-			.line-gradient {
+			hr {
 				&.left {
 					background: linear-gradient(
 						to right,
@@ -90,20 +94,18 @@
 				}
 			}
 
-			.badge {
+			h1 {
 				border-radius: 16px 16px 0 0;
 				font: caption;
 				font-family: system-ui, sans-serif;
+				font-size: 13px;
+				font-weight: 600;
 				padding: 4px 12px 0;
 
 				&.no-label,
 				&.label-on-hover {
 					font-size: 12px;
 					font-weight: 500;
-				}
-				&.label {
-					font-size: 13px;
-					font-weight: 600;
 				}
 
 				&::before {
@@ -121,11 +123,11 @@
 			}
 		}
 
-		&.compact {
+		&.density-compact {
 			height: 0;
 			margin: 0;
 
-			.badge {
+			h1 {
 				font-size: 0;
 				line-height: 0;
 				margin: 0;

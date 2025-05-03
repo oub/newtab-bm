@@ -15,15 +15,21 @@
 	const { density } = $derived($settings);
 
 	const topGroup = $derived(
-		bookmarks.filter((bookmark) => bookmark.type === 'bookmark' || bookmark.type === 'separator')
+		bookmarks.filter(
+			(item) => item.type === 'bookmark' || item.type === 'separator'
+		)
 	);
 	const otherGroups = $derived(
-		bookmarks.filter((bookmark) => bookmark.type === 'folder' && (bookmark.children?.length ?? 0) > 0)
+		bookmarks.filter(
+			(item) => item.type === 'folder' && (item.children?.length ?? 0) > 0
+		)
 	);
 
 	const load = async () => {
 		bookmarks = await loadToolbarBookmarks();
-		console.log(`${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`);
+		console.log(
+			`[NewTab Bookmarks extension] ${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`
+		);
 	};
 
 	load();
@@ -43,6 +49,21 @@
 
 <style>
 	.bookmarks {
+		align-items: center;
+		background-color: var(--oub--background-color);
+		color: var(--oub--foreground-color);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 100vh;
+
+		outline: solid 3px blue;
+		overflow: auto;
+		overflow: visible;
+		position: relative;
+
+		/** - -  */
+
 		align-items: center;
 		display: flex;
 		flex-direction: column;

@@ -22,7 +22,6 @@
 			<div class="badge">
 				<span>{bookmark.children?.length}</span>
 			</div>
-			<!-- <img class="folder" src={folder} alt="Folder" /> -->
 		</Item>
 	</button>
 </Hoverable>

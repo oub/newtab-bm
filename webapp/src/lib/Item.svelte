@@ -20,21 +20,19 @@
 	});
 </script>
 
-<div
+<dl
 	class={[
-		'item',
 		{
 			'no-label': labelsSettings === 'never',
 			'label-on-hover': labelsSettings === 'hover',
-			label: labelsSettings === 'always',
 		},
 		themeClasses,
 	]}
 	title={labelsSettings === 'never' ? label : undefined}
 >
-	<div class={['tile', themeClasses]} aria-hidden="true">
+	<dt class={['tile', themeClasses]} aria-hidden="true">
 		<div class="icon-wrapper">
-			<div></div>
+			<!-- <div></div> -->
 			<div class="site-icon default-icon rich-icon">
 				<div
 					class="icon"
@@ -44,18 +42,16 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</dt>
 	{#if labelsSettings !== 'never'}
-		<div class="title">
-			<div class="label" title={(label?.length ?? 0) > 30 ? label : undefined}>
-				{label}
-			</div>
-		</div>
+		<dd>
+			<div title={(label?.length ?? 0) > 30 ? label : undefined}>{label}</div>
+		</dd>
 	{/if}
-</div>
+</dl>
 
 <style>
-	.item {
+	dl {
 		align-items: center;
 		box-sizing: border-box;
 		color: var(--oub--foreground-color);
@@ -84,62 +80,61 @@
 			color: var(--oub--foreground-color);
 		}
 
-		.tile {
-			--title--background-color-light: color-mix(
+		dt {
+			--tile--background-color--light: color-mix(
 				in srgb,
 				var(--oub--background-color) 0%,
 				#fff
 			);
-			--title--background-color-dark: color-mix(
+			--tile--background-color--dark: color-mix(
 				in srgb,
 				var(--oub--foreground-color) 10%,
 				transparent
 			);
-			--size-item-large: 32px;
+			--tile--icon-size: 32px;
 
 			align-items: center;
 			background-color: var(--oub--background-color);
-			border-radius: 16px;
+			border-radius: calc(var(--tile--icon-size) / 2);
 			box-shadow: 0 2px 6px #00000026;
 			cursor: pointer;
 			display: flex;
-			font-size: 32px;
+			font-size: var(--tile--icon-size);
 			font-weight: 200;
-			height: 80px;
-			height: calc(var(--size-item-large) * 2);
+			height: calc(var(--tile--icon-size) * 2);
 			justify-content: center;
 			margin: 0 auto;
 			position: relative;
 			text-transform: uppercase;
-			width: calc(var(--size-item-large) * 2);
+			width: calc(var(--tile--icon-size) * 2);
 
 			&.light {
-				background-color: var(--title--background-color-light);
+				background-color: var(--tile--background-color--light);
 			}
 			&.dark {
-				background-color: var(--title--background-color-dark);
+				background-color: var(--tile--background-color--dark);
 			}
 			&:not(.light):not(.dark) {
 				@media (prefers-color-scheme: light) {
-					background-color: var(--title--background-color-light);
+					background-color: var(--tile--background-color--light);
 				}
 				@media (prefers-color-scheme: dark) {
-					background-color: var(--title--background-color-dark);
+					background-color: var(--tile--background-color--dark);
 				}
 			}
 
 			.icon-wrapper {
-				height: var(--size-item-large);
-				width: var(--size-item-large);
+				height: var(--tile--icon-size);
+				width: var(--tile--icon-size);
 
 				.default-icon {
 					align-items: center;
-					background-size: 32px;
+					background-size: var(--tile--icon-size);
 					display: flex;
 					font-size: 20px;
-					height: 32px;
+					height: var(--tile--icon-size);
 					justify-content: center;
-					width: 32px;
+					width: var(--tile--icon-size);
 				}
 
 				.rich-icon {
@@ -153,7 +148,7 @@
 					background-color: var(--newtab-background-color-secondary);
 					background-position: center center;
 					background-repeat: no-repeat;
-					border-radius: 4px;
+					border-radius: calc(var(--tile--icon-size) / 8);
 					position: absolute;
 				}
 
@@ -162,20 +157,22 @@
 					background-repeat: no-repeat;
 					background-size: cover;
 					border-radius: 4px;
-					height: 32px;
+					border-radius: calc(var(--tile--icon-size) / 8);
+					height: var(--tile--icon-size);
 					position: absolute;
-					width: 32px;
+					width: var(--tile--icon-size);
 				}
 			}
 		}
 
-		.title {
+		dd {
 			font: caption;
+			margin-inline-start: unset;
 			padding-top: 8px;
 			position: relative;
 			text-align: center;
 
-			.label {
+			div {
 				box-sizing: border-box;
 				display: block;
 				font: caption;

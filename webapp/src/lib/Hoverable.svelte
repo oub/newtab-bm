@@ -13,12 +13,12 @@
 	const noLabel = $derived($settings.labels === 'never');
 </script>
 
-<div class={['container', { noLabel }]}>
+<li class={{ 'no-label': noLabel }}>
 	{@render children()}
-</div>
+</li>
 
 <style>
-	.container {
+	li {
 		--label-text-color: var(--oub--foreground-color);
 
 		border-radius: 26px 26px 20px 20px;
@@ -26,12 +26,16 @@
 		overflow: hidden;
 		position: relative;
 
-		&.noLabel {
+		&.no-label {
 			border-radius: 26px;
 		}
 
 		&:hover {
-			background-color: color-mix(in srgb, var(--oub--foreground-color) 5%, var(--oub--background-color));
+			background-color: color-mix(
+				in srgb,
+				var(--oub--foreground-color) 5%,
+				var(--oub--background-color)
+			);
 			@media (prefers-color-scheme: dark) {
 				background-color: color-mix(
 					in srgb,
