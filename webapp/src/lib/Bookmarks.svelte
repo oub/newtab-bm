@@ -28,7 +28,7 @@
 
 	const load = async () => {
 		bookmarks = await loadToolbarBookmarks();
-		console.log(
+		console.info(
 			`[NewTab Bookmarks extension] ${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`
 		);
 	};
@@ -58,7 +58,7 @@
 		justify-content: center;
 		gap: 0;
 		min-height: 100vh;
-		padding: 1rem 1rem calc(1rem + 43px);
+		padding: 1rem;
 
 		&.density-large {
 			gap: 1rem;
