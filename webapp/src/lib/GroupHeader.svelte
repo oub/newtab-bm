@@ -39,7 +39,7 @@
 		transition: margin 0.1s ease-in-out;
 
 		h1 {
-			color: var(--oub--foreground-color);
+			color: var(--newtab-bm--foreground-color);
 			font: caption;
 			font-weight: 500;
 			line-height: 1;
@@ -79,7 +79,7 @@
 				background: linear-gradient(
 					to right,
 					transparent,
-					var(--oub--border-color) 100%
+					var(--newtab-bm--border-color) 100%
 				);
 				border-radius: 50% 0 1px 50%;
 			}
@@ -88,7 +88,7 @@
 				background: linear-gradient(
 					to left,
 					transparent,
-					var(--oub--border-color) 100%
+					var(--newtab-bm--border-color) 100%
 				);
 				border-radius: 0 50% 50% 1px;
 			}
@@ -105,7 +105,7 @@
 				&.label-on-hover {
 					color: color-mix(
 						in srgb,
-						var(--oub--foreground-color) 50%,
+						var(--newtab-bm--foreground-color) 50%,
 						transparent
 					);
 					font-size: 12px;
@@ -113,7 +113,7 @@
 				}
 
 				span::before {
-					border: solid 1px var(--oub--border-color);
+					border: solid 1px var(--newtab-bm--border-color);
 					border-bottom: 0;
 					border-radius: 16px 16px 0 0;
 					content: '';

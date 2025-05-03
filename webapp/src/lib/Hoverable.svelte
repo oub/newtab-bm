@@ -19,7 +19,7 @@
 
 <style>
 	li {
-		--label-text-color: var(--oub--foreground-color);
+		--label-text-color: var(--newtab-bm--foreground-color);
 
 		border-radius: 26px 26px 20px 20px;
 		display: inline-block;
@@ -33,14 +33,14 @@
 		&:hover {
 			background-color: color-mix(
 				in srgb,
-				var(--oub--foreground-color) 5%,
-				var(--oub--background-color)
+				var(--newtab-bm--foreground-color) 5%,
+				var(--newtab-bm--background-color)
 			);
 			@media (prefers-color-scheme: dark) {
 				background-color: color-mix(
 					in srgb,
-					var(--oub--foreground-color) 20%,
-					var(--oub--background-color) 20%
+					var(--newtab-bm--foreground-color) 20%,
+					var(--newtab-bm--background-color) 20%
 				);
 			}
 		}

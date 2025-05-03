@@ -43,7 +43,7 @@
 	dl {
 		align-items: center;
 		box-sizing: border-box;
-		color: var(--oub--foreground-color);
+		color: var(--newtab-bm--foreground-color);
 		display: block;
 		flex-direction: column;
 		height: 128px;
@@ -62,28 +62,32 @@
 		}
 
 		&.label-on-hover {
-			color: color-mix(in srgb, var(--oub--foreground-color) 0%, transparent);
+			color: color-mix(
+				in srgb,
+				var(--newtab-bm--foreground-color) 0%,
+				transparent
+			);
 
 			&:hover {
-				color: var(--oub--foreground-color);
+				color: var(--newtab-bm--foreground-color);
 			}
 		}
 
 		dt {
 			--tile--background-color--light: color-mix(
 				in srgb,
-				var(--oub--background-color) 0%,
+				var(--newtab-bm--background-color) 0%,
 				#fff
 			);
 			--tile--background-color--dark: color-mix(
 				in srgb,
-				var(--oub--foreground-color) 10%,
+				var(--newtab-bm--foreground-color) 10%,
 				transparent
 			);
 			--tile--icon-size: 32px;
 
 			align-items: center;
-			background-color: var(--oub--background-color);
+			background-color: var(--newtab-bm--background-color);
 			border-radius: calc(var(--tile--icon-size) / 2);
 			box-shadow: 0 2px 6px #00000026;
 			cursor: pointer;

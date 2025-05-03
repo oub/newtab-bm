@@ -80,12 +80,12 @@
 			--extra-spacing: 40px;
 
 			align-items: center;
-			background-color: var(--oub--background-color);
+			background-color: var(--newtab-bm--background-color);
 			border-top: 1px solid
 				color-mix(
 					in srgb,
-					var(--oub--border-color) 50%,
-					var(--oub--background-color)
+					var(--newtab-bm--border-color) 50%,
+					var(--newtab-bm--background-color)
 				);
 			bottom: 0;
 			box-shadow: 0 0 0 0 #0000;
@@ -126,9 +126,9 @@
 
 					select {
 						all: revert;
-						background-color: var(--oub--background-color);
+						background-color: var(--newtab-bm--background-color);
 						border-radius: 4px;
-						color: var(--oub--foreground-color);
+						color: var(--newtab-bm--foreground-color);
 						font: caption;
 						font-size: 12px;
 						font-size: 13.3333px;
@@ -137,33 +137,41 @@
 
 						&.light {
 							border: 1px solid
-								color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+								color-mix(
+									in srgb,
+									var(--newtab-bm--border-color) 80%,
+									transparent
+								);
 						}
 						&.dark {
 							border: 1px solid
 								color-mix(
 									in srgb,
-									var(--oub--foreground-color) 30%,
+									var(--newtab-bm--foreground-color) 30%,
 									transparent
 								);
 						}
 						&:not(.light):not(.dark) {
 							@media (prefers-color-scheme: light) {
 								border: 1px solid
-									color-mix(in srgb, var(--oub--border-color) 80%, transparent);
+									color-mix(
+										in srgb,
+										var(--newtab-bm--border-color) 80%,
+										transparent
+									);
 							}
 							@media (prefers-color-scheme: dark) {
 								border: 1px solid
 									color-mix(
 										in srgb,
-										var(--oub--foreground-color) 30%,
+										var(--newtab-bm--foreground-color) 30%,
 										transparent
 									);
 							}
 						}
 
 						&:focus {
-							box-shadow: 0 0 0 2px var(--oub--foreground-color);
+							box-shadow: 0 0 0 2px var(--newtab-bm--foreground-color);
 							outline: none;
 						}
 					}
@@ -202,8 +210,8 @@
 		&:hover {
 			background-color: color-mix(
 				in srgb,
-				var(--oub--border-color) 50%,
-				var(--oub--background-color)
+				var(--newtab-bm--border-color) 50%,
+				var(--newtab-bm--background-color)
 			);
 			opacity: 1;
 		}

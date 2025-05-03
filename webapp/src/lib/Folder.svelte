@@ -43,7 +43,7 @@
 		align-items: center;
 		border: none;
 		bottom: 0;
-		color: var(--oub--foreground-color);
+		color: var(--newtab-bm--foreground-color);
 		display: flex;
 		font-size: 24px;
 		font-weight: 600;

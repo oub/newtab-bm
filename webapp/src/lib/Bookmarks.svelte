@@ -50,8 +50,8 @@
 <style>
 	.bookmarks {
 		align-items: center;
-		background-color: var(--oub--background-color);
-		color: var(--oub--foreground-color);
+		background-color: var(--newtab-bm--background-color);
+		color: var(--newtab-bm--foreground-color);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

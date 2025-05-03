@@ -55,12 +55,12 @@
 	dialog {
 		--backdrop--background-color--light: color-mix(
 			in srgb,
-			var(--oub--background-color) 50%,
+			var(--newtab-bm--background-color) 50%,
 			#0002
 		);
 		--backdrop--background-color--dark: #0005;
 
-		background-color: var(--oub--background-color);
+		background-color: var(--newtab-bm--background-color);
 		border: none;
 		border-radius: 18px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

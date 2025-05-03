@@ -60,11 +60,11 @@
 		&.density-large {
 			background-color: color-mix(
 				in srgb,
-				var(--oub--foreground-color) 2%,
+				var(--newtab-bm--foreground-color) 2%,
 				transparent
 			);
 			border: solid 1px
-				color-mix(in srgb, var(--oub--foreground-color) 6%, transparent);
+				color-mix(in srgb, var(--newtab-bm--foreground-color) 6%, transparent);
 			border-radius: 18px;
 			padding: 15px;
 		}

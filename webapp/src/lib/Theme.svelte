@@ -54,34 +54,34 @@
 
 <style>
 	css {
-		background-color: var(--oub--background-color);
-		color: var(--oub--foreground-color);
+		background-color: var(--newtab-bm--background-color);
+		color: var(--newtab-bm--foreground-color);
 		display: contents;
 
 		@media (prefers-color-scheme: light) {
-			--oub--background-color: var(
+			--newtab-bm--background-color: var(
 				--firefox--background-color,
 				var(--default--light--color)
 			);
-			--oub--foreground-color: var(
+			--newtab-bm--foreground-color: var(
 				--firefox--foreground-color,
 				var(--default--dark--color)
 			);
-			--oub--border-color: var(
+			--newtab-bm--border-color: var(
 				--firefox--border-color,
 				var(--default--light--border-color)
 			);
 		}
 		@media (prefers-color-scheme: dark) {
-			--oub--background-color: var(
+			--newtab-bm--background-color: var(
 				--firefox--background-color,
 				var(--default--dark--color)
 			);
-			--oub--foreground-color: var(
+			--newtab-bm--foreground-color: var(
 				--firefox--foreground-color,
 				var(--default--light--color)
 			);
-			--oub--border-color: var(
+			--newtab-bm--border-color: var(
 				--firefox--border-color,
 				var(--default--dark--border-color)
 			);
