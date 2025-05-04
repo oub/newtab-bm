@@ -1,9 +1,32 @@
 import Browser, { type Bookmarks, type TopSites } from 'webextension-polyfill';
 import { getBrowser } from './browser';
 
+export type NormalizedBookmark = Bookmarks.BookmarkTreeNode & {
+	type: Bookmarks.BookmarkTreeNodeType;
+	children?: NormalizedBookmark[];
+};
 export type FaviconedBookmark = Bookmarks.BookmarkTreeNode & {
+	type: Bookmarks.BookmarkTreeNodeType;
+	children?: FaviconedBookmark[];
 	favicon?: string | null;
 };
+
+export const isFolder = (
+	bookmark: FaviconedBookmark
+): bookmark is FaviconedBookmark & {
+	type: 'folder';
+	children: FaviconedBookmark[];
+} => bookmark.type === 'folder' && bookmark.children !== undefined;
+
+export const isBookmark = (
+	bookmark: FaviconedBookmark
+): bookmark is FaviconedBookmark & { type: 'bookmark' } =>
+	bookmark.type === 'bookmark';
+
+export const isSeparator = (
+	bookmark: FaviconedBookmark
+): bookmark is FaviconedBookmark & { type: 'separator' } =>
+	bookmark.type === 'separator';
 
 const tryToGetTreeNode = async (
 	id: string
@@ -21,7 +44,7 @@ const tryToGetTreeNode = async (
 
 const normalizeBookmarks = (
 	bookmarks: Bookmarks.BookmarkTreeNode[]
-): Bookmarks.BookmarkTreeNode[] => {
+): NormalizedBookmark[] => {
 	bookmarks.forEach((bookmark) => {
 		if (bookmark.children) {
 			bookmark.type = 'folder';
@@ -30,10 +53,10 @@ const normalizeBookmarks = (
 			bookmark.type = 'bookmark';
 		}
 	});
-	return bookmarks;
+	return bookmarks as NormalizedBookmark[];
 };
 
-const getBookmarks = async (): Promise<Bookmarks.BookmarkTreeNode[]> => {
+const getBookmarks = async (): Promise<NormalizedBookmark[]> => {
 	if (typeof Browser.bookmarks === 'undefined') {
 		console.log('Bookmarks API is not available.');
 		return Promise.resolve([]);
@@ -48,9 +71,7 @@ const getBookmarks = async (): Promise<Bookmarks.BookmarkTreeNode[]> => {
 
 	const toolbarBookmarks = toolbarBookmarkTreeNode?.children ?? [];
 
-	normalizeBookmarks(toolbarBookmarks);
-
-	return toolbarBookmarks;
+	return normalizeBookmarks(toolbarBookmarks);
 };
 
 const isGoogMaps = (url?: string): boolean => {
@@ -65,10 +86,13 @@ const getTopSites = async (): Promise<TopSites.MostVisitedURL[]> =>
 	});
 
 const faviconizeFromAPI = (
-	bookmarks: Bookmarks.BookmarkTreeNode[]
+	bookmarks: NormalizedBookmark[]
 ): FaviconedBookmark[] =>
-	bookmarks.map((bookmark: Bookmarks.BookmarkTreeNode) => {
-		const faviconizedBookmark = bookmark as FaviconedBookmark;
+	bookmarks.map((bookmark: NormalizedBookmark) => {
+		const faviconizedBookmark: FaviconedBookmark = {
+			...bookmark,
+			favicon: undefined,
+		};
 		switch (bookmark.type) {
 			case 'folder':
 				faviconizedBookmark.children = faviconizeFromAPI(
@@ -87,11 +111,14 @@ const faviconizeFromAPI = (
 	});
 
 const faviconizeWithTopSites = (
-	bookmarks: Bookmarks.BookmarkTreeNode[],
+	bookmarks: NormalizedBookmark[],
 	topSites: TopSites.MostVisitedURL[]
 ): FaviconedBookmark[] =>
-	bookmarks.map((bookmark: Bookmarks.BookmarkTreeNode) => {
-		const faviconizedBookmark = bookmark as FaviconedBookmark;
+	bookmarks.map((bookmark: NormalizedBookmark) => {
+		const faviconizedBookmark: FaviconedBookmark = {
+			...bookmark,
+			favicon: undefined,
+		};
 		switch (bookmark.type) {
 			case 'folder':
 				faviconizedBookmark.children = faviconizeWithTopSites(
@@ -135,7 +162,7 @@ const faviconizeWithTopSites = (
 	});
 
 const faviconize = async (
-	bookmarks: Bookmarks.BookmarkTreeNode[]
+	bookmarks: NormalizedBookmark[]
 ): Promise<FaviconedBookmark[]> =>
 	getBrowser() === 'chrome'
 		? faviconizeFromAPI(bookmarks)

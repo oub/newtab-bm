@@ -1,35 +1,44 @@
 <script module>
-	import {
-		settings,
-		type DensitySettings,
-		type LabelsSettings,
-	} from './settings';
+	import { getContext } from 'svelte';
+	import { settings, type DensitySettings } from './settings';
 
 	interface Props {
-		title?: string;
-		density?: DensitySettings;
+		title: string;
 	}
 </script>
 
 <script lang="ts">
-	let { title, density: densityProp }: Props = $props();
+	let { title: titleProp }: Props = $props();
 
-	const labels: LabelsSettings = $derived($settings.labels);
-	const density: DensitySettings = $derived(densityProp ?? $settings.density);
+	const inDialog = getContext<boolean>('inDialog') ?? false;
+
+	// We force the title to be non-empty when in a dialog, so that the header is always shown
+	const title = $derived(
+		titleProp.trim() === '' && inDialog ? '&nbsp;' : titleProp.trim()
+	);
+
+	// We use the density from the settings, but if we are in a dialog, we force it to be large
+	const density: DensitySettings = $derived(
+		inDialog ? 'large' : $settings.density
+	);
+
+	// In medium density without bookmark label displayed, we use a slightly smaller font size
+	const smaller = $derived(
+		$settings.density === 'medium' && $settings.labels !== 'always'
+	);
 </script>
 
-<hgroup class={`density-${density}`}>
-	{#if density === 'large' || (title !== undefined && title.trim().length > 0)}
-		<h1
-			class={{
-				'no-label': labels === 'never',
-				'label-on-hover': labels === 'hover',
-			}}
-		>
-			<span>{@html (title?.trim().length ?? 0) > 0 ? title : '&nbsp;'}</span>
+{#if title !== '' || density === 'medium'}
+	<hgroup class={`density-${density}`}>
+		<h1 class={{ empty: title === '' }}>
+			{#if title !== ''}
+				<span class={{ smaller }}>
+					{@html title}
+				</span>
+			{/if}
 		</h1>
-	{/if}
-</hgroup>
+	</hgroup>
+{/if}
 
 <style>
 	hgroup {
@@ -44,7 +53,6 @@
 			font-weight: 500;
 			line-height: 1;
 			margin: 0 0 4px;
-			padding: 0;
 			position: relative;
 			transition: all 0.1s ease-in-out;
 			white-space: nowrap;
@@ -101,28 +109,37 @@
 				font-weight: 600;
 				padding: 4px 12px 0;
 
-				&.no-label,
-				&.label-on-hover {
-					color: color-mix(
-						in srgb,
-						var(--newtab-bm--foreground-color) 50%,
-						transparent
-					);
-					font-size: 12px;
-					font-weight: 500;
+				&.empty {
+					height: 0;
+					margin: 0;
+					padding: 8px 0;
+					width: 0;
+					z-index: unset;
 				}
 
-				span::before {
-					border: solid 1px var(--newtab-bm--border-color);
-					border-bottom: 0;
-					border-radius: 16px 16px 0 0;
-					content: '';
-					height: calc(50% + 1px);
-					left: -1px;
-					position: absolute;
-					right: -1px;
-					top: 0;
-					z-index: -2;
+				span {
+					&.smaller {
+						color: color-mix(
+							in srgb,
+							var(--newtab-bm--foreground-color) 50%,
+							transparent
+						);
+						font-size: 12px;
+						font-weight: 500;
+					}
+
+					&::before {
+						border: solid 1px var(--newtab-bm--border-color);
+						border-bottom: 0;
+						border-radius: 16px 16px 0 0;
+						content: '';
+						height: calc(50% + 1px);
+						left: -1px;
+						position: absolute;
+						right: -1px;
+						top: 0;
+						z-index: -2;
+					}
 				}
 			}
 		}

@@ -6,7 +6,9 @@
 	import Item from './Item.svelte';
 
 	interface Props {
-		bookmark: FaviconedBookmark;
+		bookmark: FaviconedBookmark & {
+			type: 'folder';
+		};
 	}
 </script>
 
@@ -27,12 +29,7 @@
 </Hoverable>
 
 <Dialog bind:this={dialog}>
-	<Group
-		bookmarks={bookmark?.children ?? []}
-		title={bookmark.title}
-		density="large"
-		forceTitle
-	/>
+	<Group bookmarks={bookmark.children!} title={bookmark.title} />
 </Dialog>
 
 <style>

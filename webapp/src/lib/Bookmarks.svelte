@@ -42,9 +42,11 @@
 </script>
 
 <div class={['bookmarks', densityCssClass]}>
-	<Group bookmarks={topGroup} {density} forceNoTitle />
+	{#if topGroup.length > 0}
+		<Group bookmarks={topGroup} />
+	{/if}
 	{#each otherGroups as group}
-		<Group bookmarks={group.children} title={group.title} {density} />
+		<Group bookmarks={group.children} title={group.title} />
 	{/each}
 </div>
 

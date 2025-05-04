@@ -1,46 +1,40 @@
 <script module>
+	import { getContext } from 'svelte';
 	import Bookmark from './Bookmark.svelte';
-	import { type FaviconedBookmark } from './bookmarks';
+	import { isBookmark, isFolder, type FaviconedBookmark } from './bookmarks';
 	import Folder from './Folder.svelte';
 	import GroupHeader from './GroupHeader.svelte';
 	import Separator from './Separator.svelte';
-	import { type DensitySettings } from './settings';
+	import { settings, type DensitySettings } from './settings';
 
 	interface Props {
 		bookmarks?: FaviconedBookmark[];
 		title?: string;
-		density: DensitySettings;
-		forceTitle?: boolean;
-		forceNoTitle?: boolean;
 	}
 </script>
 
 <script lang="ts">
-	let {
-		bookmarks = [],
-		title,
-		density,
-		forceTitle = false,
-		forceNoTitle = false,
-	}: Props = $props();
+	let { bookmarks = [], title }: Props = $props();
 
-	const notEmptyTitle = $derived(
-		title !== undefined && title.trim().length > 0
+	const inDialog = getContext<boolean>('inDialog') ?? false;
+
+	const density: DensitySettings = $derived(
+		inDialog ? 'large' : $settings.density
 	);
 </script>
 
 <section class={`density-${density}`}>
-	{#if (forceTitle || notEmptyTitle || density === 'medium') && !forceNoTitle}
-		<GroupHeader {title} {density} />
+	{#if title !== undefined}
+		<GroupHeader {title} />
 	{/if}
 
 	<ol>
 		{#each bookmarks as bookmark, _ (bookmark.id)}
-			{#if bookmark.type === 'folder'}
+			{#if isFolder(bookmark)}
 				<Folder {bookmark} />
-			{:else if bookmark.type === 'bookmark'}
+			{:else if isBookmark(bookmark)}
 				<Bookmark {bookmark} />
-			{:else if bookmark.type === 'separator'}
+			{:else}
 				<Separator />
 			{/if}
 		{/each}

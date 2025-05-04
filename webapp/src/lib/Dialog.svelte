@@ -1,5 +1,5 @@
 <script module>
-	import { type Snippet } from 'svelte';
+	import { setContext, type Snippet } from 'svelte';
 	import closeIcon from '../assets/cross-20.svg';
 	import { colorScheme } from './colors';
 
@@ -10,6 +10,8 @@
 
 <script lang="ts">
 	let { children }: Props = $props();
+
+	setContext('inDialog', true);
 
 	let dialog: HTMLDialogElement | null = null;
 	let isOpened = $state(false);
@@ -53,12 +55,12 @@
 
 <style>
 	dialog {
+		--backdrop--background-color--dark: #0005;
 		--backdrop--background-color--light: color-mix(
 			in srgb,
 			var(--newtab-bm--background-color) 50%,
 			#0002
 		);
-		--backdrop--background-color--dark: #0005;
 
 		background-color: var(--newtab-bm--background-color);
 		border: none;

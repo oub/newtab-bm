@@ -5,7 +5,9 @@
 	import Item from './Item.svelte';
 
 	interface Props {
-		bookmark: FaviconedBookmark;
+		bookmark: FaviconedBookmark & {
+			type: 'bookmark';
+		};
 	}
 </script>
 
