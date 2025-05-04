@@ -14,7 +14,7 @@
 <script lang="ts">
 	let { bookmark }: Props = $props();
 
-	let src = $state(bookmark.favicon ?? srcFallback);
+	let src: string = $state(bookmark.favicon ?? srcFallback);
 
 	const themeClasses = $derived({
 		light: $colorScheme === 'light',

@@ -13,9 +13,9 @@
 
 	setContext('inDialog', true);
 
-	let dialog: HTMLDialogElement | null = null;
-	let isOpened = $state(false);
-	let showDialog = $state(false);
+	let dialog: HTMLDialogElement | null = $state(null);
+	let isOpened: boolean = $state(false);
+	let showDialog: boolean = $state(false);
 
 	const themeClasses = $derived({
 		light: $colorScheme === 'light',

@@ -11,7 +11,7 @@
 </script>
 
 <script lang="ts">
-	let showSettings = $state(false);
+	let showSettings: boolean = $state(false);
 	let density: DensitySettings = $state('medium');
 	let labels: LabelsSettings = $state('always');
 
