@@ -74,10 +74,18 @@ const getBookmarks = async (): Promise<NormalizedBookmark[]> => {
 	return normalizeBookmarks(toolbarBookmarks);
 };
 
+const googMapsFavicon = 'favicons/maps.google/favicon.svg';
 const isGoogMaps = (url?: string): boolean => {
 	return !!url?.match(/^https\:\/\/www.google.[a-z]*\/maps/);
 };
-const googMapsFavicon = 'favicons/maps.google/favicon.png';
+const grenobleFavicon = 'favicons/grenoble/favicon.svg';
+const isGrenoble = (url?: string): boolean => {
+	return !!url?.match(/^https\:\/\/[a-z.]*.grenoble.fr/);
+};
+const intermarcheFavicon = 'favicons/intermarche/favicon.svg';
+const isIntermarche = (url?: string): boolean => {
+	return !!url?.match(/^https\:\/\/[a-z.]*.intermarche.com/);
+};
 
 const getTopSites = async (): Promise<TopSites.MostVisitedURL[]> =>
 	await Browser.topSites.get({
@@ -102,6 +110,10 @@ const faviconizeFromAPI = (
 			case 'bookmark':
 				if (isGoogMaps(bookmark.url)) {
 					faviconizedBookmark.favicon = googMapsFavicon;
+				} else if (isGrenoble(bookmark.url)) {
+					faviconizedBookmark.favicon = grenobleFavicon;
+				} else if (isIntermarche(bookmark.url)) {
+					faviconizedBookmark.favicon = intermarcheFavicon;
 				} else {
 					faviconizedBookmark.favicon = `chrome-extension://${Browser.runtime.id}/_favicon/?pageUrl=${bookmark.url}&size=32`;
 				}
@@ -129,6 +141,10 @@ const faviconizeWithTopSites = (
 			case 'bookmark':
 				if (isGoogMaps(bookmark.url)) {
 					faviconizedBookmark.favicon = googMapsFavicon;
+				} else if (isGrenoble(bookmark.url)) {
+					faviconizedBookmark.favicon = grenobleFavicon;
+				} else if (isIntermarche(bookmark.url)) {
+					faviconizedBookmark.favicon = intermarcheFavicon;
 				} else {
 					const url = new URL(bookmark.url || '');
 
