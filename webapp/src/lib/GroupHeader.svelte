@@ -80,6 +80,7 @@
 				display: block;
 				height: 1px;
 				margin-top: -1px;
+				min-width: 96px;
 				width: 100%;
 			}
 
