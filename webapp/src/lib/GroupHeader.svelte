@@ -102,6 +102,13 @@
 				border-radius: 0 50% 50% 1px;
 			}
 
+			&:has(> h1.empty) {
+				&::after,
+				&::before {
+					border-radius: 0;
+				}
+			}
+
 			h1 {
 				border-radius: 16px 16px 0 0;
 				font: caption;
