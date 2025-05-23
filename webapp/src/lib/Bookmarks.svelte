@@ -4,6 +4,18 @@
 	import Group from './Group.svelte';
 	import { settings } from './settings';
 
+	function countNbOfBookmarks(bookmarks: FaviconedBookmark[]) {
+		let count = 0;
+		for (const bookmark of bookmarks) {
+			if (bookmark.type === 'folder' && bookmark.children) {
+				count += countNbOfBookmarks(bookmark.children);
+			} else if (bookmark.type === 'bookmark') {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	interface Props {}
 </script>
 
@@ -15,12 +27,12 @@
 	const { density } = $derived($settings);
 	const densityCssClass = $derived(`density-${density}`);
 
-	const topGroup = $derived(
+	const topBookmarks = $derived(
 		bookmarks.filter(
 			(item) => item.type === 'bookmark' || item.type === 'separator'
 		)
 	);
-	const otherGroups = $derived(
+	const groups = $derived(
 		bookmarks.filter(
 			(item) => item.type === 'folder' && (item.children?.length ?? 0) > 0
 		)
@@ -28,8 +40,9 @@
 
 	const load = async () => {
 		bookmarks = await loadToolbarBookmarks();
+		const bookmarksCount = countNbOfBookmarks(bookmarks);
 		console.info(
-			`[NewTab Bookmarks extension] ${bookmarks.length} bookmark${bookmarks.length > 1 ? 's' : ''} loaded from the Bookmarks toolbar`
+			`[NewTab Bookmarks extension] ${bookmarksCount} bookmark${bookmarksCount > 1 ? 's' : ''} loaded from the Bookmarks toolbar`
 		);
 	};
 
@@ -42,10 +55,10 @@
 </script>
 
 <div class={['bookmarks', densityCssClass]}>
-	{#if topGroup.length > 0}
-		<Group bookmarks={topGroup} />
+	{#if topBookmarks.length > 0}
+		<Group bookmarks={topBookmarks} />
 	{/if}
-	{#each otherGroups as group}
+	{#each groups as group}
 		<Group bookmarks={group.children} title={group.title} />
 	{/each}
 </div>
