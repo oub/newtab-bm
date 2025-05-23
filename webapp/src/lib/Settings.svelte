@@ -56,14 +56,14 @@
 			</label>
 		</div>
 
-		<button class="action close" onclick={() => (showSettings = !showSettings)}>
+		<button class="action close" onclick={() => (showSettings = false)}>
 			<img src={closeIcon} alt="Close" class={themeClasses} />
 		</button>
 	</div>
 </div>
 
 {#if !showSettings}
-	<button class="action open" onclick={() => (showSettings = !showSettings)}>
+	<button class="action open" onclick={() => (showSettings = true)}>
 		<img src={settingsIcon} alt="Settings" class={themeClasses} />
 	</button>
 {/if}
